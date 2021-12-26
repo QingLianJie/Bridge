@@ -1,0 +1,8 @@
+{
+  "name": "qing-adapter-gm",
+  "version": "0.1.0",
+  "description": "借助 Greasemonkey 实现数据请求与获取",
+  "main": "src/index.ts",
+  "scripts": {},
+  "license": "MIT"
+}

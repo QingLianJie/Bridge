@@ -1,0 +1,21 @@
+{
+  "name": "qing-bridge",
+  "version": "0.1.0",
+  "description": "清廉街数据桥接模块",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/QingLianJie/Bridge.git"
+  },
+  "author": "清廉街",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/QingLianJie/Bridge/issues"
+  },
+  "homepage": "https://github.com/QingLianJie/Bridge#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  }
+}
