@@ -5,15 +5,7 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup",
-    "build:userscript": "tsup && "
+    "build": "tsup"
   },
-  "license": "MIT",
-  "tsup": {
-    "entry": [
-      "src/index.ts"
-    ],
-    "splitting": false,
-    "clean": true
-  }
+  "license": "MIT"
 }
