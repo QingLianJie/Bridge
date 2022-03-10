@@ -1,0 +1,19 @@
+{
+  "name": "adapter-userscript",
+  "version": "0.1.0",
+  "description": "适用于 Tampermonkey 的脚本",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "tsup --watch",
+    "build": "tsup",
+    "build:userscript": "tsup && "
+  },
+  "license": "MIT",
+  "tsup": {
+    "entry": [
+      "src/index.ts"
+    ],
+    "splitting": false,
+    "clean": true
+  }
+}

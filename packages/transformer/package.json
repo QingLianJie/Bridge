@@ -1,8 +1,0 @@
-{
-  "name": "qing-transformer",
-  "version": "0.1.0",
-  "description": "用于解析和转换学校网站返回的 HTML 中的数据",
-  "main": "src/index.ts",
-  "scripts": {},
-  "license": "MIT"
-}

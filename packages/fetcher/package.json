@@ -1,8 +1,0 @@
-{
-  "name": "qing-fetcher",
-  "version": "0.1.0",
-  "description": "用于向学校网站发送请求和获取数据",
-  "main": "src/index.ts",
-  "scripts": {},
-  "license": "MIT"
-}

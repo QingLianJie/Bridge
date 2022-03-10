@@ -1,9 +1,9 @@
 {
-  "name": "qing-bridge",
+  "name": "qing-monorepo",
   "version": "0.1.0",
   "description": "清廉街数据桥接模块",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -16,7 +16,13 @@
   },
   "homepage": "https://github.com/QingLianJie/Bridge#readme",
   "devDependencies": {
-    "tsup": "^5.11.9",
-    "typescript": "^4.5.4"
+    "husky": "^7.0.4",
+    "lint-staged": "^12.3.5",
+    "prettier": "^2.5.1",
+    "tsup": "^5.12.0",
+    "typescript": "^4.6.2"
+  },
+  "lint-staged": {
+    "*.{ts,js,css,md}": "prettier --write"
   }
 }

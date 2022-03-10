@@ -1,0 +1,8 @@
+{
+  "name": "qing-bridge",
+  "version": "0.1.0",
+  "description": "用于获取并解析网站数据",
+  "main": "src/index.ts",
+  "scripts": {},
+  "license": "MIT"
+}
