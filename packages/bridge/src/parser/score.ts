@@ -1,5 +1,5 @@
 interface map {
-  [index:string]: Array<UserScoreItem>
+  [index: string]: Array<UserScoreItem>
 }
 
 /**
@@ -9,18 +9,18 @@ interface map {
  */
 export const score = (html: string): Array<UserTermScore> => {
   const dom = new DOMParser().parseFromString(html, 'text/html')
-  const data = dom.querySelector('#dataList');
-  const termMap:map = {}
+  const data = dom.querySelector('#dataList')
+  const termMap: map = {}
 
-  if (data == null) return [];
+  if (data == null) return []
 
-  data.querySelectorAll("tr").forEach((tr: HTMLTableRowElement)=>{
-    const row: Array<string> = [];
-    tr.querySelectorAll("td").forEach((td:HTMLTableCellElement)=> {
-      row.push(td.textContent!);
-    });
-    if (row.length !== 13) return;
-    let term = row[1];
+  data.querySelectorAll('tr').forEach((tr: HTMLTableRowElement) => {
+    const row: Array<string> = []
+    tr.querySelectorAll('td').forEach((td: HTMLTableCellElement) => {
+      row.push(td.textContent!)
+    })
+    if (row.length !== 13) return
+    let term = row[1]
     let record = {
       name: row[3],
       id: row[2],
@@ -30,19 +30,19 @@ export const score = (html: string): Array<UserTermScore> => {
       credit: row[5],
       period: row[6],
       score: row[4],
-    };
-    if (!(term in termMap)) termMap[term] = [];
-    termMap[term].push(record);
+    }
+    if (!(term in termMap)) termMap[term] = []
+    termMap[term].push(record)
   })
 
-  const result: Array<UserTermScore> = [];
+  const result: Array<UserTermScore> = []
   for (let term in termMap) {
-    let scores = termMap[term];
+    let scores = termMap[term]
     result.push({
       name: term,
       total: scores.length,
       scores: scores,
-    });
+    })
   }
-  return result;
+  return result
 }
