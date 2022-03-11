@@ -1,6 +1,11 @@
+enum Method {
+  GET = 'GET',
+  POST = 'POST',
+}
+
 export const 学生个人页面 = {
   url: 'https://edusys.wvpn.hrbeu.edu.cn/jsxsd/framework/xsMain.jsp',
-  method: 'GET',
+  method: Method.GET,
   headers: {
     // 参考 https://web.dev/i18n/zh/fetch-metadata/
     'sec-fetch-dest': 'document',
@@ -13,7 +18,7 @@ export const 学生个人页面 = {
 
 export const 登录请求 = {
   url: 'https://cas-443.wvpn.hrbeu.edu.cn/cas/login',
-  method: 'POST',
+  method: Method.POST,
   headers: {
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
@@ -39,7 +44,7 @@ export const 登录请求 = {
 
 export const 获取验证码 = {
   url: 'https://cas-443.wvpn.hrbeu.edu.cn/sso/apis/v2/open/captcha?captchaSize=4',
-  method: 'GET',
+  method: Method.GET,
   headers: {
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
@@ -52,7 +57,7 @@ export const 获取验证码 = {
 
 export const 当前课表 = {
   url: 'https://edusys.wvpn.hrbeu.edu.cn/jsxsd/xskb/xskb_list.do',
-  method: 'GET',
+  method: Method.GET,
   headers: {
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
@@ -66,7 +71,7 @@ export const 当前课表 = {
 
 export const 查询课表 = {
   url: 'https://edusys.wvpn.hrbeu.edu.cn/jsxsd/xskb/xskb_list.do',
-  method: 'POST',
+  method: Method.POST,
   headers: {
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
@@ -89,7 +94,7 @@ export const 查询课表 = {
 
 export const 所有成绩 = {
   url: 'https://edusys.wvpn.hrbeu.edu.cn/jsxsd/kscj/cjcx_list',
-  method: 'POST',
+  method: Method.POST,
   headers: {
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',

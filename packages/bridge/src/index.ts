@@ -1,9 +1,24 @@
-import { 学生个人页面, 获取验证码, 登录请求, 所有成绩, 当前课表 } from './const'
-import { score } from './parser/score'
+import { 学生个人页面, 当前课表, 所有成绩, 登录请求, 获取验证码 } from './const'
 
+/**
+ * 获取指定 Input 的值
+ * @param {string} name - Input 的 name 属性
+ * @param {Document} dom - 哪个文档
+ */
 const value = (name: string, dom: Document) =>
   dom.querySelector(`input[name="${name}"]`)?.getAttribute('value') || ''
 
+/**
+ * 检查是否跳转到了登录页面（也就是是否需要重新登录）
+ * @param {string} html - 页面文件
+ */
+const check = (html: string) =>
+  html.includes('<title>哈尔滨工程大学统一身份认证</title>')
+
+/**
+ * 将对象转为 FormData 字符串
+ * @param {object} data - 待转换的对象
+ */
 const payload = (data: { [key: string]: string }) =>
   Object.entries(data).reduce(
     (pre, [key, value]) => pre + `${key}=${encodeURIComponent(value)}&`,
@@ -22,6 +37,15 @@ export class Bridge {
     this.fetcher = fetcher
   }
 
+  async check() {
+    const html = await this.fetcher(学生个人页面.url, {
+      method: 学生个人页面.method,
+      headers: 学生个人页面.headers,
+    })
+    if (check(html)) return html
+    return '已登录过'
+  }
+
   /**
    * 登录学校网站，需要先获取验证码
    * @param user {@link User} - 用户名和密码
@@ -33,8 +57,7 @@ export class Bridge {
       method: 学生个人页面.method,
       headers: 学生个人页面.headers,
     })
-    if (!html.includes('<title>哈尔滨工程大学统一身份认证</title>'))
-      return '已登录过'
+    if (!check(html)) return '已登录过'
 
     const dom = new DOMParser().parseFromString(html, 'text/html')
 
@@ -85,6 +108,8 @@ export class Bridge {
       console.error(error)
       throw new Error('获取成绩失败')
     })
+
+    if (check(html)) return '请重新登录'
 
     // return score(html)
     return html
