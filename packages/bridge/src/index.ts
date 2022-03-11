@@ -80,13 +80,14 @@ export class Bridge {
     const html = await this.fetcher(所有成绩.url, {
       method: 所有成绩.method,
       headers: { ...所有成绩.headers },
-      form: payload({ ...登录请求.payload }),
+      form: payload({ ...所有成绩.payload }),
     }).catch(error => {
       console.error(error)
       throw new Error('获取成绩失败')
     })
 
-    return score(html)
+    // return score(html)
+    return html
   }
 
   /**
@@ -103,6 +104,6 @@ export class Bridge {
     })
 
     // return timetable(html)
-    return []
+    return html
   }
 }
