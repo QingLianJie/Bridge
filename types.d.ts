@@ -6,3 +6,5 @@ interface FetcherOptions {
   method: 'GET' | 'POST'
   referer?: string
 }
+
+
