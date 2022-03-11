@@ -6,6 +6,8 @@ unsafeWindow.Fetcher = async (url: string, options?: FetcherOptions) => {
       method: options?.method || 'GET',
       url: url,
       responseType: 'text',
+      headers: options?.headers || {},
+      data: options?.form || '',
       onload: (res: MonkeyXhrResponse) => {
         resolve(res.responseText)
       },
