@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "description": "清廉街数据桥接模块",
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
+    "posttest": "npm run format"
   },
   "repository": {
     "type": "git",

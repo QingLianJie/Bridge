@@ -8,5 +8,3 @@ interface FetcherOptions {
   headers?: { [key: string]: string }
   form?: string
 }
-
-
