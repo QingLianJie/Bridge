@@ -3,8 +3,10 @@ type Fetcher = (url: string, options?: FetcherOptions) => Promise<string>
 
 /** fetcher 的配置项 */
 interface FetcherOptions {
-  method: 'GET' | 'POST'
+  method: 'GET' | 'POST' | string
   referer?: string
+  headers?: { [key: string]: string }
+  form?: string
 }
 
 

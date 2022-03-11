@@ -3,9 +3,14 @@
   "version": "0.1.0",
   "description": "用于获取并解析网站数据",
   "main": "src/index.ts",
+  "type": "module",
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup",
+    "demo": "tsup --out-dir demo --clean false && serve demo"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^13.0.2"
+  }
 }
