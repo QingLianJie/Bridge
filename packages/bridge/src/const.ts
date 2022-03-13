@@ -1,11 +1,11 @@
-enum Method {
+export enum FetchMethod {
   GET = 'GET',
   POST = 'POST',
 }
 
-export const 学生个人页面 = {
+export const 学生个人中心 = {
   url: 'https://edusys.wvpn.hrbeu.edu.cn/jsxsd/framework/xsMain.jsp',
-  method: Method.GET,
+  method: FetchMethod.GET,
   headers: {
     // 参考 https://web.dev/i18n/zh/fetch-metadata/
     'sec-fetch-dest': 'document',
@@ -16,9 +16,9 @@ export const 学生个人页面 = {
   },
 }
 
-export const 登录请求 = {
+export const 登录 = {
   url: 'https://cas-443.wvpn.hrbeu.edu.cn/cas/login',
-  method: Method.POST,
+  method: FetchMethod.POST,
   headers: {
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
@@ -42,9 +42,35 @@ export const 登录请求 = {
   },
 }
 
+export const 登录页面 = {
+  url: 'https://cas-443.wvpn.hrbeu.edu.cn/cas/login?service=https://edusys.wvpn.hrbeu.edu.cn/jsxsd/index.jsp',
+  method: FetchMethod.GET,
+  headers: {
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'same-site',
+    referer: 'https://edusys.wvpn.hrbeu.edu.cn/',
+    accept:
+      'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  },
+}
+
+export const 退出登录 = {
+  url: 'https://cas-443.wvpn.hrbeu.edu.cn/cas/logout?service=https://edusys.wvpn.hrbeu.edu.cn/jsxsd/caslogin.jsp',
+  method: FetchMethod.GET,
+  headers: {
+    'sec-fetch-dest': 'document',
+    'sec-fetch-mode': 'navigate',
+    'sec-fetch-site': 'same-origin',
+    referer: 'https://edusys.wvpn.hrbeu.edu.cn/',
+    accept:
+      'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+  },
+}
+
 export const 获取验证码 = {
   url: 'https://cas-443.wvpn.hrbeu.edu.cn/sso/apis/v2/open/captcha?captchaSize=4',
-  method: Method.GET,
+  method: FetchMethod.GET,
   headers: {
     'sec-fetch-dest': 'empty',
     'sec-fetch-mode': 'cors',
@@ -57,7 +83,7 @@ export const 获取验证码 = {
 
 export const 当前课表 = {
   url: 'https://edusys.wvpn.hrbeu.edu.cn/jsxsd/xskb/xskb_list.do',
-  method: Method.GET,
+  method: FetchMethod.GET,
   headers: {
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
@@ -71,7 +97,7 @@ export const 当前课表 = {
 
 export const 查询课表 = {
   url: 'https://edusys.wvpn.hrbeu.edu.cn/jsxsd/xskb/xskb_list.do',
-  method: Method.POST,
+  method: FetchMethod.POST,
   headers: {
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',
@@ -94,7 +120,7 @@ export const 查询课表 = {
 
 export const 所有成绩 = {
   url: 'https://edusys.wvpn.hrbeu.edu.cn/jsxsd/kscj/cjcx_list',
-  method: Method.POST,
+  method: FetchMethod.POST,
   headers: {
     'sec-fetch-dest': 'document',
     'sec-fetch-mode': 'navigate',

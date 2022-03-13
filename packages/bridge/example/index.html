@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bridge Example</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <h1>Bridge Test</h1>
+    <strong>推荐打开 DevTools 调试</strong>
+    <p>
+      测试之前，请确保已经安装好插件，且在文件头添加下面这一句
+      <br />
+      <code>// @match http://localhost:3000/*</code>
+    </p>
+
+    <ol>
+      <li>首先检查登录状态</li>
+      <li>如果没有登录，就先获取验证码</li>
+      <li>之后输入用户名、密码和验证码，点击登录</li>
+      <li>在下方即可展示获得的数据</li>
+    </ol>
+
+    <section id="check">
+      <h2>登录状态</h2>
+      <button>检查</button>
+      <p>登录状态：<code></code></p>
+    </section>
+
+    <section id="captcha">
+      <h2>验证码</h2>
+      <div>
+        <img alt="captcha" width="100px" />
+        <button>获取验证码</button>
+      </div>
+
+      <p>验证码 Token：<code></code></p>
+    </section>
+
+    <section id="login">
+      <h2>登录</h2>
+
+      <input type="text" name="username" placeholder="用户名" />
+      <input type="password" name="password" placeholder="密码" />
+      <input type="text" name="captcha" placeholder="输入验证码" />
+
+      <button>登录</button>
+      <p>登录结果：<code></code></p>
+    </section>
+
+    <section id="logout">
+      <h2>退出登录</h2>
+      <button>退出</button>
+      <p>退出结果：<code></code></p>
+    </section>
+
+    <section id="score">
+      <h2>成绩</h2>
+      <button>获取成绩</button>
+      <pre></pre>
+    </section>
+
+    <script type="module">
+      import { Bridge } from './index.js'
+      const bridge = new Bridge(window.Fetcher)
+
+      const check = {
+        button: document.querySelector('#check button'),
+        result: document.querySelector('#check code'),
+      }
+
+      check.button.onclick = async () => {
+        try {
+          await bridge.home()
+          console.log('已登录过')
+          check.result.textContent = '已登录过'
+        } catch (error) {
+          console.error(error)
+          alert('需要重新登录')
+          check.result.textContent = '需要重新登录'
+        }
+      }
+
+      const captcha = {
+        image: document.querySelector('#captcha img'),
+        button: document.querySelector('#captcha button'),
+        token: document.querySelector('#captcha code'),
+      }
+
+      let token = ''
+
+      captcha.button.onclick = async () => {
+        try {
+          const res = await bridge.captcha()
+          console.log(res)
+          captcha.image.src =
+            'data:image/jpeg;charset=utf-8;base64,' +
+            res.img.replace(/\\n/g, '')
+          captcha.token.textContent = res.token
+          token = res.token
+        } catch (error) {
+          console.error(error)
+          alert('获取验证码失败')
+        }
+      }
+
+      const login = {
+        username: document.querySelector('#login input[name="username"]'),
+        password: document.querySelector('#login input[name="password"]'),
+        captcha: document.querySelector('#login input[name="captcha"]'),
+        button: document.querySelector('#login button'),
+        result: document.querySelector('#login code'),
+      }
+
+      login.button.onclick = async () => {
+        if (token === '') {
+          alert('请先获取验证码')
+          return
+        }
+
+        try {
+          await bridge.login(
+            {
+              username: login.username.value,
+              password: login.password.value,
+            },
+            { captcha: login.captcha.value, token }
+          )
+
+          console.log('登录成功')
+          login.result.textContent = '登录成功'
+          token = ''
+        } catch (error) {
+          console.error(error)
+          login.result.textContent = '登录失败'
+        }
+      }
+
+      const logout = {
+        button: document.querySelector('#logout button'),
+        result: document.querySelector('#logout code'),
+      }
+
+      logout.button.onclick = async () => {
+        try {
+          await bridge.logout()
+          console.log('退出成功')
+          logout.result.textContent = '退出成功'
+        } catch (error) {
+          console.error(error)
+          logout.result.textContent = '退出失败'
+        }
+      }
+
+      const score = {
+        button: document.querySelector('#score button'),
+        pre: document.querySelector('#score pre'),
+      }
+
+      score.button.onclick = async () => {
+        try {
+          const res = await bridge.score()
+          console.log(res)
+          score.pre.textContent = JSON.stringify(res, null, 2)
+        } catch (error) {
+          console.error(error)
+          alert('需要重新登录')
+        }
+      }
+    </script>
+  </body>
+</html>

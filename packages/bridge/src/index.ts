@@ -1,33 +1,44 @@
-import { 学生个人页面, 当前课表, 所有成绩, 登录请求, 获取验证码 } from './const'
+import {
+  学生个人中心,
+  当前课表,
+  所有成绩,
+  登录,
+  登录页面,
+  获取验证码,
+  退出登录,
+} from './const'
+import { score } from './parser/score'
+import { timetable } from './parser/timetable'
 
 /**
  * 获取指定 Input 的值
  * @param {string} name - Input 的 name 属性
  * @param {Document} dom - 哪个文档
  */
-const value = (name: string, dom: Document) =>
-  dom.querySelector(`input[name="${name}"]`)?.getAttribute('value') || ''
-
-/**
- * 检查是否跳转到了登录页面（也就是是否需要重新登录）
- * @param {string} html - 页面文件
- */
-const check = (html: string) =>
-  html.includes('<title>哈尔滨工程大学统一身份认证</title>')
+const getInputValue = (name: string, dom: Document) =>
+  (dom.querySelector(`input[name="${name}"]`) as HTMLInputElement)?.value || ''
 
 /**
  * 将对象转为 FormData 字符串
  * @param {object} data - 待转换的对象
  */
-const payload = (data: { [key: string]: string }) =>
-  Object.entries(data).reduce(
-    (pre, [key, value]) => pre + `${key}=${encodeURIComponent(value)}&`,
-    ''
-  )
+const convertPayload = (data: { [key: string]: string }) =>
+  Object.entries(data)
+    .reduce(
+      (pre, [key, value]) => pre + `${key}=${encodeURIComponent(value)}&`,
+      ''
+    )
+    .slice(0, -1) // 移除最后多的一个 &
 
-/** 桥接模块，用于获取和解析学校数据 */
+/**
+ * 桥接模块，用于获取和解析学校数据
+ * @see {@link https://github.com/QingLianJie/Bridge QingLianJie/Bridge}
+ */
 export class Bridge {
   private fetcher: Fetcher
+
+  /** 登录页面上的一些参数，意义不明 */
+  private loginPayload = {}
 
   /**
    * 创建实例，传入 fetcher
@@ -35,64 +46,122 @@ export class Bridge {
    */
   constructor(fetcher: Fetcher) {
     this.fetcher = fetcher
-  }
-
-  async check() {
-    const html = await this.fetcher(学生个人页面.url, {
-      method: 学生个人页面.method,
-      headers: 学生个人页面.headers,
-    })
-    if (check(html)) return html
-    return '已登录过'
+    console.debug(`已获取 Fetcher`)
+    console.debug(fetcher)
   }
 
   /**
-   * 登录学校网站，需要先获取验证码
+   * 检查是否跳转到登录页面
+   * @param {string} html - 要检查的 HTML
+   * @param {string} text - 判断依据，需要包含的文本（标题）
+   * @returns 无返回值
+   */
+  private async checkLogin(html: string, text: string) {
+    if (!html.includes(`<title>${text}</title>`)) {
+      // 登录失效后，会跳转到两种不同的登录页面
+      // 只有登录页面标题为「哈尔滨工程大学统一身份认证」时
+      // 才是正确的登录页面，否则要重新进入这个登录页面
+      console.debug(`不符合条件，需要重新登录`, text)
+      if (html.includes('<title>哈尔滨工程大学统一身份认证</title>')) {
+        await this.setLoginPayload(html)
+        console.debug(`检测到登录页面，已设置 Payload`)
+      }
+      throw new Error('需要重新登录')
+    }
+    console.debug(`符合条件，无需重新登录`, text)
+  }
+
+  /**
+   * 从登录页面上获取登录需要的参数
+   * @param {string} html 传入登录页面的 HTML
+   * @returns 无返回值
+   */
+  private async setLoginPayload(html: string) {
+    const dom = new DOMParser().parseFromString(html, 'text/html')
+    console.debug(`设置登录 Payload`)
+    this.loginPayload = {
+      lt: getInputValue('lt', dom),
+      execution: getInputValue('execution', dom),
+      source: getInputValue('source', dom),
+    }
+  }
+
+  /**
+   * 登录学校网站
    * @param user {@link User} - 用户名和密码
    * @param captcha {@link Captcha} - 验证码结果和 Token
-   * @returns 登录结果
+   * @returns 无返回值
    */
   async login(user: User, captcha: Captcha) {
-    const html = await this.fetcher(学生个人页面.url, {
-      method: 学生个人页面.method,
-      headers: 学生个人页面.headers,
-    })
-    if (!check(html)) return '已登录过'
+    // 如果没有获取登录所需的参数
+    // 就先加载一次登录页面来获取参数
+    if (Object.keys(this.loginPayload).length === 0) {
+      console.debug(`没有检测到登录 Payload，需要加载登录页面`)
+      const html = await this.fetcher({ ...登录页面 })
+      await this.setLoginPayload(html)
+    }
 
-    const dom = new DOMParser().parseFromString(html, 'text/html')
-
-    const lt = value('lt', dom)
-    const execution = value('execution', dom)
-    const source = value('source', dom)
-
-    await this.fetcher(登录请求.url, {
-      method: 登录请求.method,
-      headers: 登录请求.headers,
-      form: payload({
-        ...登录请求.payload,
-        lt,
-        execution,
-        source,
+    await this.fetcher({
+      ...登录,
+      form: convertPayload({
+        ...登录.payload,
         ...captcha,
         ...user,
+        ...this.loginPayload,
       }),
     }).catch(error => {
       console.error(error)
       throw new Error('登录失败')
     })
 
-    return '登录成功'
+    console.debug(`登录完成，清除无用 Payload`)
+    this.loginPayload = {}
+  }
+
+  /**
+   * 退出登录学校网站
+   * @returns 无返回值
+   */
+  async logout() {
+    await this.fetcher({
+      ...退出登录,
+    }).catch(error => {
+      console.error(error)
+      throw new Error('退出登录失败')
+    })
+    console.debug(`退出登录完成`)
   }
 
   /**
    * 获取验证码
    * @returns 验证码图片和 Token - {@link CaptchaResponse}
    */
-  async captcha() {
-    return await this.fetcher(获取验证码.url, {
-      method: 获取验证码.method,
-      headers: { ...获取验证码.headers },
+  async captcha(): Promise<CaptchaResponse> {
+    const captcha = await this.fetcher({ ...获取验证码 })
+      .then(res => JSON.parse(res))
+      .catch(error => {
+        console.error(error)
+        throw new Error('获取验证码失败')
+      })
+    console.debug(`获取验证码完成`, captcha)
+    return captcha
+  }
+
+  /**
+   * 获取学生个人页面，需要登录
+   * @returns 学生个人页面
+   */
+  async home() {
+    const html = await this.fetcher({
+      ...学生个人中心,
+    }).catch(error => {
+      console.error(error)
+      throw new Error('获取学生个人中心失败')
     })
+
+    console.debug(`获取学生个人中心完成`)
+    await this.checkLogin(html, '学生个人中心')
+    return html
   }
 
   /**
@@ -100,19 +169,17 @@ export class Bridge {
    * @returns 所有成绩页面
    */
   async score() {
-    const html = await this.fetcher(所有成绩.url, {
-      method: 所有成绩.method,
-      headers: { ...所有成绩.headers },
-      form: payload({ ...所有成绩.payload }),
+    const html = await this.fetcher({
+      ...所有成绩,
+      form: convertPayload({ ...所有成绩.payload }),
     }).catch(error => {
       console.error(error)
-      throw new Error('获取成绩失败')
+      throw new Error('获取所有成绩失败')
     })
 
-    if (check(html)) return '请重新登录'
-
-    // return score(html)
-    return html
+    console.debug(`获取所有成绩完成`)
+    await this.checkLogin(html, '学生个人考试成绩')
+    return score(html)
   }
 
   /**
@@ -120,15 +187,15 @@ export class Bridge {
    * @returns 当前课表页面
    */
   async timetable() {
-    const html = await this.fetcher(当前课表.url, {
-      method: 当前课表.method,
-      headers: { ...当前课表.headers },
+    const html = await this.fetcher({
+      ...当前课表,
     }).catch(error => {
       console.error(error)
-      throw new Error('当前课表失败')
+      throw new Error('获取当前课表失败')
     })
 
-    // return timetable(html)
-    return html
+    console.debug(`获取当前课表完成`)
+    await this.checkLogin(html, '学期理论课表')
+    return timetable(html, 1)
   }
 }

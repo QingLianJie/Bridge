@@ -7,10 +7,9 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "demo": "tsup --out-dir demo --clean false && serve demo"
+    "example": "tsup -d example --clean false && serve example",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "serve": "^13.0.2"
-  }
+  "license": "MIT"
 }
