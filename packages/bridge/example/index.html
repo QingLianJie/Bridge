@@ -62,6 +62,12 @@
       <pre></pre>
     </section>
 
+    <section id="timetable">
+      <h2>课表</h2>
+      <button>获取课表</button>
+      <pre></pre>
+    </section>
+
     <script type="module">
       import { Bridge } from './index.js'
       const bridge = new Bridge(window.Fetcher)
@@ -164,6 +170,22 @@
           const res = await bridge.score()
           console.log(res)
           score.pre.textContent = JSON.stringify(res, null, 2)
+        } catch (error) {
+          console.error(error)
+          alert('需要重新登录')
+        }
+      }
+
+      const timetable = {
+        button: document.querySelector('#timetable button'),
+        pre: document.querySelector('#timetable pre'),
+      }
+
+      timetable.button.onclick = async () => {
+        try {
+          const res = await bridge.timetable()
+          console.log(res)
+          timetable.pre.textContent = JSON.stringify(res, null, 2)
         } catch (error) {
           console.error(error)
           alert('需要重新登录')
