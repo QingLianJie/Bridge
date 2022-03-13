@@ -1,0 +1,1572 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head id="headerid1">
+    <base target="_self" />
+    <title>学期理论课表</title>
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="keywords" content="湖南X智科技教务系统" />
+    <meta http-equiv="description" content="湖南X智科技教务系统" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+  </head>
+
+  <body onbeforeunload="checkLeave()">
+    <div class="Nsb_pw">
+      <div class="Nsb_top">
+        <div class="Nsb_top_logo">
+          <table border="0" cellpadding="0" cellspacing="0">
+            <tr>
+              <td height="75" valign="middle">
+                <img
+                  id="imgLogo"
+                  src="/jsxsd/framework/images/index_logo.gif"
+                />
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="Nsb_top_menu">
+          <div
+            id="Top1_divLoginName"
+            class="Nsb_top_menu_nc"
+            style="color: #000000"
+          >
+            张三(0000000000)
+          </div>
+          <ul>
+            <li>
+              <a
+                id="TopUserSetting"
+                info="个人设置"
+                href="#"
+                class="Nsb_top_menu_id"
+                ><img
+                  src="/jsxsd/framework/images/Nsb_top_p1.jpg"
+                  id="Top1_imgTopSmallUserPhoto"
+              /></a>
+            </li>
+            <span></span>
+
+            <li>
+              <a
+                id="TopTheme"
+                info="切换主题"
+                href="#"
+                class="Nsb_top_menu_style"
+                onclick="changeDisplay('divTopTheme')"
+              ></a
+              ><a
+                id="font_li1"
+                href="#"
+                onclick="changeDisplay('divTopTheme')"
+                style="cursor: pointer; color: blue"
+                >切换主题</a
+              >
+            </li>
+
+            <li id="Top1_LBackManage">
+              <a
+                info="个人设置"
+                href="/jsxsd/grsz/grsz_xggrxx.do?Ves632DSdyV=NEW_XSD_WDZM"
+                class="Nsb_top_menu_options"
+              ></a
+              ><a
+                id="font_li2"
+                href="/jsxsd/grsz/grsz_xggrxx.do?Ves632DSdyV=NEW_XSD_WDZM"
+                style="cursor: pointer; color: blue"
+                >个人设置</a
+              >
+            </li>
+            <li id="Top1_LExit">
+              <a
+                info="退出"
+                href="javascript:Logout('/jsxsd');"
+                class="Nsb_top_menu_exit"
+              ></a
+              ><a
+                id="font_li3"
+                href="javascript:Logout('/jsxsd');"
+                style="cursor: pointer; color: blue"
+                >退出</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div
+          id="divTopTheme"
+          group="topDiv"
+          style="display: none; z-index: 10000"
+        >
+          <div class="Nsb_top_c Nsb_top_c3">
+            <ul>
+              <li
+                id="theme_blue"
+                theme="blue"
+                index="1"
+                class="Nsb_top_c3_11"
+                onclick="javascript:changeTheme('/jsxsd','blue',this);"
+              ></li>
+              <li
+                id="theme_green"
+                theme="green"
+                index="2"
+                class="Nsb_top_c3_2"
+                onclick="javascript:changeTheme('/jsxsd','green',this);"
+              ></li>
+              <li
+                id="theme_orange"
+                theme="orange"
+                index="3"
+                class="Nsb_top_c3_3"
+                onclick="javascript:changeTheme('/jsxsd','orange',this);"
+              ></li>
+              <li
+                id="theme_red"
+                theme="red"
+                index="4"
+                class="Nsb_top_c3_4"
+                onclick="javascript:changeTheme('/jsxsd','red',this);"
+              ></li>
+              <li
+                id="theme_purple"
+                theme="purple"
+                index="5"
+                class="Nsb_top_c3_5"
+                onclick="javascript:changeTheme('/jsxsd','purple',this);"
+              ></li>
+              <li
+                id="theme_gray"
+                theme="gray"
+                index="6"
+                class="Nsb_top_c3_6"
+                onclick="javascript:changeTheme('/jsxsd','gray',this);"
+              ></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Nsb_menu_pw">
+      <div class="Nsb_pw">
+        <div id="divFirstMenuClass" class="Nsb_menu menu_cn">
+          <ul>
+            <li title="首页">
+              <a
+                class="Nsb_menu_li_h"
+                id="homepage"
+                href="/jsxsd/framework/main.jsp"
+                ><span></span>我的桌面</a
+              >
+            </li>
+
+            <li title="我的桌面">
+              <a
+                id="calender_user_schedule"
+                name="calender_user_schedule1"
+                href="/jsxsd/jxzl/jxzl_query.do?Ves632DSdyV=NEW_XSD_WDZM"
+                >我的桌面</a
+              >
+            </li>
+
+            <li title="学籍成绩">
+              <a
+                id="calender_user_schedule"
+                name="calender_user_schedule1"
+                href="/jsxsd/xsxj/xjxxgl.do?Ves632DSdyV=NEW_XSD_XJCJ"
+                >学籍成绩</a
+              >
+            </li>
+
+            <li title="培养管理">
+              <a
+                class="Nsb_menu_li_now"
+                id="calender_user_schedule"
+                name="calender_user_schedule1"
+                href="/jsxsd/xskb/xskb_list.do?Ves632DSdyV=NEW_XSD_PYGL"
+                >培养管理</a
+              >
+            </li>
+
+            <li title="考试报名">
+              <a
+                id="calender_user_schedule"
+                name="calender_user_schedule1"
+                href="/jsxsd/xsks/xsksap_query.do?Ves632DSdyV=NEW_XSD_KSBM"
+                >考试报名</a
+              >
+            </li>
+
+            <li title="工程训练">
+              <a
+                id="calender_user_schedule"
+                name="calender_user_schedule1"
+                href="/jsxsd/xsgcxl/xkfa_list.do?Ves632DSdyV=NEW_XSD_GCXL"
+                >工程训练</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="Nsb_pw">
+      <div id="LeftMenu1_divChildMenu" class="Nsb_layout_l Nsb_l_list">
+        <div class="Nsb_l_list_top"></div>
+
+        <h4 class="exam_user_exam">我的课表</h4>
+        <ul>
+          <li>
+            <a class="Nsb_l_list_now" href="/jsxsd/xskb/xskb_list.do"
+              >学期理论课表</a
+            >
+          </li>
+        </ul>
+
+        <h4 class="exam_user_exam">选课管理</h4>
+        <ul>
+          <li><a href="/jsxsd/xsxk/xklc_list.do">学生选课中心</a></li>
+        </ul>
+
+        <h4 class="exam_user_exam">辅修管理</h4>
+        <ul>
+          <li><a href="/jsxsd/fxgl/fxbmxx_query.do">辅修报名</a></li>
+        </ul>
+
+        <h4 class="exam_user_exam">意向专业</h4>
+        <ul>
+          <li><a href="/jsxsd/pyfa/yxbj_query.do">意向班级查看</a></li>
+
+          <li><a href="/jsxsd/pyfa/yxzy_query.do">意向专业申请</a></li>
+        </ul>
+      </div>
+      <div class="Nsb_layout_r">
+        <iframe style="display: none" name="ifrmPrint" id="ifrmPrint"></iframe>
+        <form
+          action=""
+          name="FormPrint"
+          id="FormPrint"
+          method="post"
+          target="ifrmPrint"
+        ></form>
+        <form action="" name="Form1" id="Form1" method="post" target="_self">
+          <input type="hidden" name="cj0701id" id="cj0701id" value="" />
+          <div class="Nsb_r_title">
+            <a href="/jsxsd/framework/main.jsp">首页</a> » 我的课表 »
+            学期理论课表
+          </div>
+          <div>
+            周次：<select
+              name="zc"
+              id="zc"
+              onchange="javascript:document.getElementById('Form1').submit();"
+            >
+              <option value="">(全部)</option>
+
+              <option value="1">第1周</option>
+
+              <option value="2">第2周</option>
+
+              <option value="3">第3周</option>
+
+              <option value="4">第4周</option>
+
+              <option value="5">第5周</option>
+
+              <option value="6">第6周</option>
+
+              <option value="7">第7周</option>
+
+              <option value="8">第8周</option>
+
+              <option value="9">第9周</option>
+
+              <option value="10">第10周</option>
+
+              <option value="11">第11周</option>
+
+              <option value="12">第12周</option>
+
+              <option value="13">第13周</option>
+
+              <option value="14">第14周</option>
+
+              <option value="15">第15周</option>
+
+              <option value="16">第16周</option>
+
+              <option value="17">第17周</option>
+
+              <option value="18">第18周</option>
+
+              <option value="19">第19周</option>
+
+              <option value="20">第20周</option>
+
+              <option value="21">第21周</option>
+
+              <option value="22">第22周</option>
+
+              <option value="23">第23周</option>
+
+              <option value="24">第24周</option>
+
+              <option value="25">第25周</option>
+
+              <option value="26">第26周</option>
+
+              <option value="27">第27周</option>
+
+              <option value="28">第28周</option>
+
+              <option value="29">第29周</option>
+
+              <option value="30">第30周</option>
+
+              <input type="hidden" name="demo" id="demo" value="" /></select
+            >学年学期：<select
+              name="xnxq01id"
+              id="xnxq01id"
+              onchange="javascript:document.getElementById('Form1').submit();"
+              　style="width:180px;"
+            >
+              <option value="2022-2023-1">2022-2023-1</option>
+
+              <option value="2021-2022-2">2021-2022-2</option>
+
+              <option value="2021-2022-1">2021-2022-1</option>
+
+              <option value="2020-2021-2">2020-2021-2</option>
+
+              <option value="2020-2021-1">2020-2021-1</option>
+
+              <option value="2019-2020-2">2019-2020-2</option>
+
+              <option value="2019-2020-1" selected="selected">
+                2019-2020-1
+              </option>
+
+              <option value="2018-2019-2">2018-2019-2</option>
+
+              <option value="2018-2019-1">2018-2019-1</option>
+
+              <option value="2017-2018-2">2017-2018-2</option>
+
+              <option value="2017-2018-1">2017-2018-1</option>
+
+              <option value="2016-2017-2">2016-2017-2</option>
+
+              <option value="2016-2017-1">2016-2017-1</option>
+
+              <option value="2015-2016-2">2015-2016-2</option>
+
+              <option value="2015-2016-1">2015-2016-1</option>
+
+              <option value="2014-2015-2">2014-2015-2</option>
+
+              <option value="2014-2015-1">2014-2015-1</option>
+
+              <option value="2013-2014-2">2013-2014-2</option>
+
+              <option value="2013-2014-1">2013-2014-1</option>
+
+              <option value="2012-2013-2">2012-2013-2</option>
+
+              <option value="2012-2013-1">2012-2013-1</option>
+
+              <option value="2011-2012-2">2011-2012-2</option>
+
+              <option value="2011-2012-1">2011-2012-1</option>
+
+              <option value="2010-2011-2">2010-2011-2</option>
+
+              <option value="2010-2011-1">2010-2011-1</option>
+
+              <option value="2009-2010-2">2009-2010-2</option>
+
+              <option value="2009-2010-1">2009-2010-1</option>
+
+              <option value="2008-2009-2">2008-2009-2</option>
+
+              <option value="2008-2009-1">2008-2009-1</option>
+
+              <option value="2007-2008-2">2007-2008-2</option>
+
+              <option value="2007-2008-1">2007-2008-1</option>
+
+              <option value="2006-2007-2">2006-2007-2</option>
+
+              <option value="2006-2007-1">2006-2007-1</option>
+
+              <option value="2005-2006-2">2005-2006-2</option>
+
+              <option value="2005-2006-1">2005-2006-1</option>
+
+              <option value="2004-2005-2">2004-2005-2</option>
+
+              <option value="2004-2005-1">2004-2005-1</option>
+
+              <option value="2003-2004-2">2003-2004-2</option>
+
+              <option value="2003-2004-1">2003-2004-1</option>
+
+              <option value="2002-2003-2">2002-2003-2</option>
+
+              <option value="2002-2003-1">2002-2003-1</option>
+
+              <option value="2001-2002-2">2001-2002-2</option>
+
+              <option value="2001-2002-1">2001-2002-1</option></select
+            >&nbsp;<input
+              type="button"
+              value="打 印"
+              class="button"
+              onclick="print(this)"
+            />&nbsp;
+
+            <!--  
+		<input type="button" class="button" id="btnShenshen" value="返 回" onclick="javascript:window.location.href='/jsxsd/framework/main.jsp';"/>
+		-->
+
+            <input
+              type="checkbox"
+              name="sfFD"
+              id="sfFD"
+              value="1"
+              onclick="funFD(this.checked)"
+              checked
+            />放大
+          </div>
+
+          　
+          <table
+            id="kbtable"
+            border="1"
+            width="100%"
+            cellspacing="0"
+            cellpadding="0"
+            class="Nsb_r_list Nsb_table"
+          >
+            <tr>
+              <th width="70" height="28" align="center">&nbsp;</th>
+              <th width="123" height="28" align="center">星期一</th>
+              <th width="123" height="28" align="center">星期二</th>
+              <th width="123" height="28" align="center">星期三</th>
+              <th width="124" height="28" align="center">星期四</th>
+              <th width="124" height="28" align="center">星期五</th>
+              <th width="124" height="28" align="center">星期六</th>
+              <th width="124" height="28" align="center">星期日</th>
+            </tr>
+
+            <tr style="height: 160px">
+              <th width="70" height="160" align="center">第一大节&nbsp;</th>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-1-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-1-2"
+                />
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-1-1"
+                  class="kbcontent1"
+                >
+                  离散数学（一）<br /><font title="周次(节次)">11-18(周)</font
+                  ><br /><font title="教室">21B 414中</font
+                  ><br />----------------------<br />软件工程专业导论<br /><font
+                    title="周次(节次)"
+                    >1-4(周)</font
+                  ><br /><font title="教室">21B 411小</font><br />
+                </div>
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-1-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  离散数学（一）<br /><font title="老师">张立国</font
+                  ><br /><font title="周次">11-18(周)</font><br /><font
+                    title="节次"
+                    >[0102节]</font
+                  ><br /><font title="教室">21B 414中</font
+                  ><br />---------------------<br />软件工程专业导论<br /><font
+                    title="老师"
+                    >王宇华</font
+                  ><br /><font title="周次">1-4(周)</font><br /><font
+                    title="节次"
+                    >[0102节]</font
+                  ><br /><font title="教室">21B 411小</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-2-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-2-2"
+                />
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-2-1"
+                  class="kbcontent1"
+                >
+                  面向对象程序设计<br /><font title="周次(节次)">10-17(周)</font
+                  ><br /><font title="教室">21B 412中</font
+                  ><br />----------------------<br />复变函数<br /><font
+                    title="周次(节次)"
+                    >1-5,7-9(周)</font
+                  ><br /><font title="教室">1#N302</font><br />
+                </div>
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-2-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  面向对象程序设计<br /><font title="老师">张海涛</font
+                  ><br /><font title="周次">10-17(周)</font><br /><font
+                    title="节次"
+                    >[0102节]</font
+                  ><br /><font title="教室">21B 412中</font
+                  ><br />---------------------<br />复变函数<br /><font
+                    title="老师"
+                    >冯国峰</font
+                  ><br /><font title="周次">1-5,7-9(周)</font><br /><font
+                    title="节次"
+                    >[0102节]</font
+                  ><br /><font title="教室">1#N302</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-3-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-3-2"
+                />
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-3-1"
+                  class="kbcontent1"
+                >
+                  电路基础B<br /><font title="周次(节次)">1-5,7-16(周)</font
+                  ><br /><font title="教室">21B 410小</font><br />
+                </div>
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-3-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  电路基础B<br /><font title="老师">项建弘</font><br /><font
+                    title="周次"
+                    >1-5,7-16(周)</font
+                  ><br /><font title="节次">[0102节]</font><br /><font
+                    title="教室"
+                    >21B 410小</font
+                  ><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-4-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-4-2"
+                />
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-4-1"
+                  class="kbcontent1"
+                >
+                  大学物理下A<br /><font title="周次(节次)">1-5,7-17(周)</font
+                  ><br /><font title="教室">逸01</font><br />
+                </div>
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-4-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  大学物理下A<br /><font title="老师">刘晓瑜</font><br /><font
+                    title="周次"
+                    >1-5,7-17(周)</font
+                  ><br /><font title="节次">[0102节]</font><br /><font
+                    title="教室"
+                    >逸01</font
+                  ><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-5-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-5-2"
+                />
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-5-1"
+                  class="kbcontent1"
+                >
+                  电路基础B<br /><font title="周次(节次)">1-2,4-5,7-15(周)</font
+                  ><br /><font title="教室">21B 410小</font><br />
+                </div>
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-5-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  电路基础B<br /><font title="老师">项建弘</font><br /><font
+                    title="周次"
+                    >1-2,4-5,7-15(周)</font
+                  ><br /><font title="节次">[0102节]</font><br /><font
+                    title="教室"
+                    >21B 410小</font
+                  ><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-6-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-6-2"
+                />
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-6-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-6-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-7-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="EDAD227570484E328FD14C6FAA02C0EB-7-2"
+                />
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-7-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="EDAD227570484E328FD14C6FAA02C0EB-7-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr style="height: 160px">
+              <th width="70" height="160" align="center">第二大节&nbsp;</th>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="1ED6FFB127894B9F84914C367A35604B-1-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="1ED6FFB127894B9F84914C367A35604B-1-2"
+                />
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-1-1"
+                  class="kbcontent1"
+                >
+                  大学物理下A<br /><font title="周次(节次)">1-6,8-17(周)</font
+                  ><br /><font title="教室">逸01</font><br />
+                </div>
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-1-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  大学物理下A<br /><font title="老师">刘晓瑜</font><br /><font
+                    title="周次"
+                    >1-6,8-17(周)</font
+                  ><br /><font title="节次">[0304节]</font><br /><font
+                    title="教室"
+                    >逸01</font
+                  ><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="1ED6FFB127894B9F84914C367A35604B-2-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="1ED6FFB127894B9F84914C367A35604B-2-2"
+                />
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-2-1"
+                  class="kbcontent1"
+                >
+                  离散数学（一）<br /><font title="周次(节次)">16-18(周)</font
+                  ><br /><font title="教室">21B 414中</font
+                  ><br />----------------------<br />数据结构<br /><font
+                    title="周次(节次)"
+                    >1-5,7-11(周)</font
+                  ><br /><font title="教室">21B 504中</font><br />
+                </div>
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-2-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  离散数学（一）<br /><font title="老师">张立国</font
+                  ><br /><font title="周次">16-18(周)</font><br /><font
+                    title="节次"
+                    >[030405节]</font
+                  ><br /><font title="教室">21B 414中</font
+                  ><br />---------------------<br />数据结构<br /><font
+                    title="老师"
+                    >张泽宝,王勇</font
+                  ><br /><font title="周次">1-5,7-11(周)</font><br /><font
+                    title="节次"
+                    >[030405节]</font
+                  ><br /><font title="教室">21B 504中</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="1ED6FFB127894B9F84914C367A35604B-3-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="1ED6FFB127894B9F84914C367A35604B-3-2"
+                />
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-3-1"
+                  class="kbcontent1"
+                >
+                  马克思主义基本原理概论<br /><font title="周次(节次)"
+                    >9-19(周)</font
+                  ><br /><font title="教室">1#S504视觉室</font
+                  ><br />----------------------<br />软件工程专业导论<br /><font
+                    title="周次(节次)"
+                    >1-4(周)</font
+                  ><br /><font title="教室">21B 411小</font><br />
+                </div>
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-3-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  马克思主义基本原理概论<br /><font title="老师">张微</font
+                  ><br /><font title="周次">9-19(周)</font><br /><font
+                    title="节次"
+                    >[030405节]</font
+                  ><br /><font title="教室">1#S504视觉室</font
+                  ><br />---------------------<br />软件工程专业导论<br /><font
+                    title="老师"
+                    >王宇华</font
+                  ><br /><font title="周次">1-4(周)</font><br /><font
+                    title="节次"
+                    >[0304节]</font
+                  ><br /><font title="教室">21B 411小</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="1ED6FFB127894B9F84914C367A35604B-4-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="1ED6FFB127894B9F84914C367A35604B-4-2"
+                />
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-4-1"
+                  class="kbcontent1"
+                >
+                  数据结构<br /><font title="周次(节次)">1-5,7-10(周)</font
+                  ><br /><font title="教室">21B 504中</font><br />
+                </div>
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-4-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  数据结构<br /><font title="老师">张泽宝,王勇</font><br /><font
+                    title="周次"
+                    >1-5,7-10(周)</font
+                  ><br /><font title="节次">[030405节]</font><br /><font
+                    title="教室"
+                    >21B 504中</font
+                  ><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="1ED6FFB127894B9F84914C367A35604B-5-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="1ED6FFB127894B9F84914C367A35604B-5-2"
+                />
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-5-1"
+                  class="kbcontent1"
+                >
+                  大学英语（三）<br /><font title="周次(节次)"
+                    >1-2,4-5,7-18(周)</font
+                  ><br /><font title="教室">41#252</font><br />
+                </div>
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-5-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  大学英语（三）<br /><font title="老师">李林</font><br /><font
+                    title="周次"
+                    >1-2,4-5,7-18(周)</font
+                  ><br /><font title="节次">[0304节]</font><br /><font
+                    title="教室"
+                    >41#252</font
+                  ><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="1ED6FFB127894B9F84914C367A35604B-6-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="1ED6FFB127894B9F84914C367A35604B-6-2"
+                />
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-6-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-6-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="1ED6FFB127894B9F84914C367A35604B-7-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="1ED6FFB127894B9F84914C367A35604B-7-2"
+                />
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-7-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="1ED6FFB127894B9F84914C367A35604B-7-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr style="height: 160px">
+              <th width="70" height="160" align="center">第三大节&nbsp;</th>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="450F1417C2F84B9982DAF9F3E044925D-1-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="450F1417C2F84B9982DAF9F3E044925D-1-2"
+                />
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-1-1"
+                  class="kbcontent1"
+                >
+                  计算机组成原理<br /><font title="周次(节次)">8-17(周)</font
+                  ><br /><font title="教室">21B 404中</font><br />
+                </div>
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-1-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  计算机组成原理<br /><font title="老师">李思照,冯晓宁</font
+                  ><br /><font title="周次">8-17(周)</font><br /><font
+                    title="节次"
+                    >[0607节]</font
+                  ><br /><font title="教室">21B 404中</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="450F1417C2F84B9982DAF9F3E044925D-2-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="450F1417C2F84B9982DAF9F3E044925D-2-2"
+                />
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-2-1"
+                  class="kbcontent1"
+                >
+                  工程力学<br /><font title="周次(节次)">2-5,7-12(周)</font
+                  ><br /><font title="教室">11#124大</font><br />
+                </div>
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-2-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  工程力学<br /><font title="老师">章继峰,张学义</font
+                  ><br /><font title="周次">2-5,7-12(周)</font><br /><font
+                    title="节次"
+                    >[0607节]</font
+                  ><br /><font title="教室">11#124大</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="450F1417C2F84B9982DAF9F3E044925D-3-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="450F1417C2F84B9982DAF9F3E044925D-3-2"
+                />
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-3-1"
+                  class="kbcontent1"
+                >
+                  体育（三）<br /><font title="周次(节次)">4-19(周)</font
+                  ><br /><font title="教室">南田径场</font><br />
+                </div>
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-3-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  体育（三）<br /><font title="老师">刘云斐</font><br /><font
+                    title="周次"
+                    >4-19(周)</font
+                  ><br /><font title="节次">[0607节]</font><br /><font
+                    title="教室"
+                    >南田径场</font
+                  ><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="450F1417C2F84B9982DAF9F3E044925D-4-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="450F1417C2F84B9982DAF9F3E044925D-4-2"
+                />
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-4-1"
+                  class="kbcontent1"
+                >
+                  面向对象程序设计<br /><font title="周次(节次)">10-17(周)</font
+                  ><br /><font title="教室">计算中心575室</font
+                  ><br />----------------------<br />复变函数<br /><font
+                    title="周次(节次)"
+                    >1-5,7-9(周)</font
+                  ><br /><font title="教室">1#N302</font><br />
+                </div>
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-4-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  面向对象程序设计<br /><font title="老师">张海涛</font
+                  ><br /><font title="周次">10-17(周)</font><br /><font
+                    title="节次"
+                    >[0607节]</font
+                  ><br /><font title="教室">计算中心575室</font
+                  ><br />---------------------<br />复变函数<br /><font
+                    title="老师"
+                    >冯国峰</font
+                  ><br /><font title="周次">1-5,7-9(周)</font><br /><font
+                    title="节次"
+                    >[0607节]</font
+                  ><br /><font title="教室">1#N302</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="450F1417C2F84B9982DAF9F3E044925D-5-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="450F1417C2F84B9982DAF9F3E044925D-5-2"
+                />
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-5-1"
+                  class="kbcontent1"
+                >
+                  工程力学<br /><font title="周次(节次)">2,4-5,7-13(周)</font
+                  ><br /><font title="教室">11#124大</font><br />
+                </div>
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-5-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  工程力学<br /><font title="老师">章继峰,张学义</font
+                  ><br /><font title="周次">2,4-5,7-13(周)</font><br /><font
+                    title="节次"
+                    >[0607节]</font
+                  ><br /><font title="教室">11#124大</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="450F1417C2F84B9982DAF9F3E044925D-6-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="450F1417C2F84B9982DAF9F3E044925D-6-2"
+                />
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-6-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-6-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="450F1417C2F84B9982DAF9F3E044925D-7-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="450F1417C2F84B9982DAF9F3E044925D-7-2"
+                />
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-7-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="450F1417C2F84B9982DAF9F3E044925D-7-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr style="height: 160px">
+              <th width="70" height="160" align="center">第四大节&nbsp;</th>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="4E928887555B44FEB64E6B79D790CBC3-1-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="4E928887555B44FEB64E6B79D790CBC3-1-2"
+                />
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-1-1"
+                  class="kbcontent1"
+                >
+                  数据结构与程序设计实验<br /><font title="周次(节次)"
+                    >12-15(周)</font
+                  ><br /><font title="教室">计算中心475室</font><br />
+                </div>
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-1-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  数据结构与程序设计实验<br /><font title="老师"
+                    >张泽宝,王勇</font
+                  ><br /><font title="周次">12-15(周)</font><br /><font
+                    title="节次"
+                    >[08091011节]</font
+                  ><br /><font title="教室">计算中心475室</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="4E928887555B44FEB64E6B79D790CBC3-2-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="4E928887555B44FEB64E6B79D790CBC3-2-2"
+                />
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-2-1"
+                  class="kbcontent1"
+                >
+                  形势与政策（二）<br /><font title="周次(节次)"
+                    >4,8,10,12(双周)</font
+                  ><br /><font title="教室">1#S302</font><br />
+                </div>
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-2-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  形势与政策（二）<br /><font title="老师">田朝辉</font
+                  ><br /><font title="周次">4,8,10,12(双周)</font><br /><font
+                    title="节次"
+                    >[0809节]</font
+                  ><br /><font title="教室">1#S302</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="4E928887555B44FEB64E6B79D790CBC3-3-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="4E928887555B44FEB64E6B79D790CBC3-3-2"
+                />
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-3-1"
+                  class="kbcontent1"
+                >
+                  数据结构与程序设计实验<br /><font title="周次(节次)"
+                    >12-15(周)</font
+                  ><br /><font title="教室">计算中心475室</font><br />
+                </div>
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-3-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  数据结构与程序设计实验<br /><font title="老师"
+                    >张泽宝,王勇</font
+                  ><br /><font title="周次">12-15(周)</font><br /><font
+                    title="节次"
+                    >[08091011节]</font
+                  ><br /><font title="教室">计算中心475室</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="4E928887555B44FEB64E6B79D790CBC3-4-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="4E928887555B44FEB64E6B79D790CBC3-4-2"
+                />
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-4-1"
+                  class="kbcontent1"
+                >
+                  计算机组成原理<br /><font title="周次(节次)">7-18(周)</font
+                  ><br /><font title="教室">21B 404中</font><br />
+                </div>
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-4-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  计算机组成原理<br /><font title="老师">李思照,冯晓宁</font
+                  ><br /><font title="周次">7-18(周)</font><br /><font
+                    title="节次"
+                    >[080910节]</font
+                  ><br /><font title="教室">21B 404中</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="4E928887555B44FEB64E6B79D790CBC3-5-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="4E928887555B44FEB64E6B79D790CBC3-5-2"
+                />
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-5-1"
+                  class="kbcontent1"
+                >
+                  离散数学（一）<br /><font title="周次(节次)">17(周)</font
+                  ><br /><font title="教室">11#151大</font
+                  ><br />----------------------<br />离散数学（一）<br /><font
+                    title="周次(节次)"
+                    >11-16,18(周)</font
+                  ><br /><font title="教室">21B 414中</font><br />
+                </div>
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-5-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  离散数学（一）<br /><font title="老师">张立国</font
+                  ><br /><font title="周次">17(周)</font><br /><font
+                    title="节次"
+                    >[080910节]</font
+                  ><br /><font title="教室">11#151大</font
+                  ><br />---------------------<br />离散数学（一）<br /><font
+                    title="老师"
+                    >张立国</font
+                  ><br /><font title="周次">11-16,18(周)</font><br /><font
+                    title="节次"
+                    >[080910节]</font
+                  ><br /><font title="教室">21B 414中</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="4E928887555B44FEB64E6B79D790CBC3-6-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="4E928887555B44FEB64E6B79D790CBC3-6-2"
+                />
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-6-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-6-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="4E928887555B44FEB64E6B79D790CBC3-7-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="4E928887555B44FEB64E6B79D790CBC3-7-2"
+                />
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-7-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="4E928887555B44FEB64E6B79D790CBC3-7-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr style="height: 160px">
+              <th width="70" height="160" align="center">第五大节&nbsp;</th>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-1-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-1-2"
+                />
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-1-1"
+                  class="kbcontent1"
+                >
+                  数据结构与程序设计实验<br /><font title="周次(节次)"
+                    >12-15(周)</font
+                  ><br /><font title="教室">计算中心475室</font><br />
+                </div>
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-1-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  数据结构与程序设计实验<br /><font title="老师"
+                    >张泽宝,王勇</font
+                  ><br /><font title="周次">12-15(周)</font><br /><font
+                    title="节次"
+                    >[08091011节]</font
+                  ><br /><font title="教室">计算中心475室</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-2-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-2-2"
+                />
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-2-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-2-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-3-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-3-2"
+                />
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-3-1"
+                  class="kbcontent1"
+                >
+                  数据结构与程序设计实验<br /><font title="周次(节次)"
+                    >12-15(周)</font
+                  ><br /><font title="教室">计算中心475室</font><br />
+                </div>
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-3-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  数据结构与程序设计实验<br /><font title="老师"
+                    >张泽宝,王勇</font
+                  ><br /><font title="周次">12-15(周)</font><br /><font
+                    title="节次"
+                    >[08091011节]</font
+                  ><br /><font title="教室">计算中心475室</font><br />
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-4-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-4-2"
+                />
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-4-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-4-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-5-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-5-2"
+                />
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-5-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-5-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-6-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-6-2"
+                />
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-6-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-6-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+              <td width="123" height="160" align="center" valign="top">
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_1"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-7-1"
+                />
+                <input
+                  type="hidden"
+                  name="jx0415zbdiv_2"
+                  value="BF5F55BDD5D74A3384CE1CD5516AEDD4-7-2"
+                />
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-7-1"
+                  class="kbcontent1"
+                >
+                  &nbsp;
+                </div>
+                <div
+                  id="BF5F55BDD5D74A3384CE1CD5516AEDD4-7-2"
+                  style="display: none"
+                  class="kbcontent"
+                >
+                  &nbsp;
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <th width="70" height="28" align="center">备注:</th>
+              <td colspan="7" align="left">
+                计算机硬件综合实验 付小晶,王立闻,高迪&nbsp;&nbsp;
+                12-19周;&nbsp;&nbsp; 航空与航天（网络） 梁爽&nbsp;&nbsp;
+                1-8周;&nbsp;&nbsp; 大学物理实验（二） 孙晶华,李平&nbsp;&nbsp;
+                1-18周;&nbsp;&nbsp;
+              </td>
+            </tr>
+          </table>
+        </form>
+      </div>
+    </div>
+    <br />
+  </body>
+</html>

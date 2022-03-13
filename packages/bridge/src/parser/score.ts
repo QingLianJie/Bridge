@@ -25,11 +25,13 @@ export const score = (html: string): Array<UserTermScore> => {
       name: row[3],
       id: row[2],
       type: row[9],
-      category: row[10],
+      nature: row[10],
       test: row[7],
       credit: row[5],
       period: row[6],
       score: row[4],
+      category: row[11],
+      mark: row[12],
     }
     if (!(term in termMap)) termMap[term] = []
     termMap[term].push(record)

@@ -1,0 +1,475 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head id="headerid1">
+  <base target="_self" />
+  <title>学生个人考试成绩</title>
+  <meta http-equiv="pragma" content="no-cache" />
+  <meta http-equiv="cache-control" content="no-cache" />
+  <meta http-equiv="expires" content="0" />
+  <meta http-equiv="keywords" content="湖南强X科技教务系统" />
+  <meta http-equiv="description" content="湖南强X科技教务系统" />
+  <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+</head>
+
+<body onbeforeunload="checkLeave()">
+  <div class="Nsb_pw">
+    <div class="Nsb_top">
+      <div class="Nsb_top_logo">
+        <table border="0" cellpadding="0" cellspacing="0">
+          <tr>
+            <td height="75" valign="middle">
+              <img id="imgLogo" src="/jsxsd/framework/images/index_logo.gif" />
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="Nsb_top_menu">
+        <div id="Top1_divLoginName" class="Nsb_top_menu_nc" style="color: #000000">
+          张三(0000000000)
+        </div>
+        <ul>
+          <li>
+            <a id="TopUserSetting" info="个人设置" href="#" class="Nsb_top_menu_id"><img
+                src="/jsxsd/framework/images/Nsb_top_p1.jpg" id="Top1_imgTopSmallUserPhoto" /></a>
+          </li>
+          <span></span>
+
+          <li>
+            <a id="TopTheme" info="切换主题" href="#" class="Nsb_top_menu_style"
+              onclick="changeDisplay('divTopTheme')"></a><a id="font_li1" href="#"
+              onclick="changeDisplay('divTopTheme')" style="cursor: pointer; color: blue">切换主题</a>
+          </li>
+
+          <li id="Top1_LBackManage">
+            <a info="个人设置" href="/jsxsd/grsz/grsz_xggrxx.do?Ves632DSdyV=NEW_XSD_WDZM"
+              class="Nsb_top_menu_options"></a><a id="font_li2"
+              href="/jsxsd/grsz/grsz_xggrxx.do?Ves632DSdyV=NEW_XSD_WDZM" style="cursor: pointer; color: blue">个人设置</a>
+          </li>
+          <li id="Top1_LExit">
+            <a info="退出" href="javascript:Logout('/jsxsd');" class="Nsb_top_menu_exit"></a><a id="font_li3"
+              href="javascript:Logout('/jsxsd');" style="cursor: pointer; color: blue">退出</a>
+          </li>
+        </ul>
+      </div>
+      <div id="divTopTheme" group="topDiv" style="display: none; z-index: 10000">
+        <div class="Nsb_top_c Nsb_top_c3">
+          <ul>
+            <li id="theme_blue" theme="blue" index="1" class="Nsb_top_c3_11"
+              onclick="javascript:changeTheme('/jsxsd','blue',this);"></li>
+            <li id="theme_green" theme="green" index="2" class="Nsb_top_c3_2"
+              onclick="javascript:changeTheme('/jsxsd','green',this);"></li>
+            <li id="theme_orange" theme="orange" index="3" class="Nsb_top_c3_3"
+              onclick="javascript:changeTheme('/jsxsd','orange',this);"></li>
+            <li id="theme_red" theme="red" index="4" class="Nsb_top_c3_4"
+              onclick="javascript:changeTheme('/jsxsd','red',this);"></li>
+            <li id="theme_purple" theme="purple" index="5" class="Nsb_top_c3_5"
+              onclick="javascript:changeTheme('/jsxsd','purple',this);"></li>
+            <li id="theme_gray" theme="gray" index="6" class="Nsb_top_c3_6"
+              onclick="javascript:changeTheme('/jsxsd','gray',this);"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="Nsb_menu_pw">
+    <div class="Nsb_pw">
+      <div id="divFirstMenuClass" class="Nsb_menu menu_cn">
+        <ul>
+          <li title="首页">
+            <a class="Nsb_menu_li_h" id="homepage" href="/jsxsd/framework/main.jsp"><span></span>我的桌面</a>
+          </li>
+
+          <li title="我的桌面">
+            <a id="calender_user_schedule" name="calender_user_schedule1"
+              href="/jsxsd/jxzl/jxzl_query.do?Ves632DSdyV=NEW_XSD_WDZM">我的桌面</a>
+          </li>
+
+          <li title="学籍成绩">
+            <a class="Nsb_menu_li_now" id="calender_user_schedule" name="calender_user_schedule1"
+              href="/jsxsd/xsxj/xjxxgl.do?Ves632DSdyV=NEW_XSD_XJCJ">学籍成绩</a>
+          </li>
+
+          <li title="培养管理">
+            <a id="calender_user_schedule" name="calender_user_schedule1"
+              href="/jsxsd/xskb/xskb_list.do?Ves632DSdyV=NEW_XSD_PYGL">培养管理</a>
+          </li>
+
+          <li title="考试报名">
+            <a id="calender_user_schedule" name="calender_user_schedule1"
+              href="/jsxsd/xsks/xsksap_query.do?Ves632DSdyV=NEW_XSD_KSBM">考试报名</a>
+          </li>
+
+          <li title="工程训练">
+            <a id="calender_user_schedule" name="calender_user_schedule1"
+              href="/jsxsd/xsgcxl/xkfa_list.do?Ves632DSdyV=NEW_XSD_GCXL">工程训练</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="Nsb_pw">
+    <br />
+    <div class="Nsb_r_title">
+      <a href="/jsxsd/framework/main.jsp">首页</a> » 考试成绩 » 课程成绩查询 »
+      查询列表
+    </div>
+    <input type="button" id="btn_back" class="button" value="返 回"
+      onclick="window.location.href='/jsxsd/kscj/cjcx_query.do';" />
+    <br />
+    <font color="red">
+      注意：“通识教育选修课程类别”，类别里有1类—文化素质教育类；2类—新生研讨类；3类—专业拓展类；4类—创新创业类。其中“文化素质教育类”课程具体划分为七个模块，分别是：A：中外文明与历史；B：语言与文学；C：哲学人生与社会科学；D：艺术修养与审美；E：自然科学与人类文明；F：国防文化与船海史话；G：中华优秀传统文化
+    </font>
+    <br />
+
+    查询条件：全部
+
+    <table id="dataList" width="100%" border="0" cellspacing="0" cellpadding="0" class="Nsb_r_list Nsb_table">
+      <tr>
+        <th class="Nsb_r_list_thb" style="width: 35px">序号</th>
+        <th class="Nsb_r_list_thb" style="width: 140px">开课学期</th>
+        <th class="Nsb_r_list_thb" style="width: 110px">课程编号</th>
+        <th class="Nsb_r_list_thb">课程名称</th>
+        <th class="Nsb_r_list_thb" style="width: 60px">成绩</th>
+        <th class="Nsb_r_list_thb" style="width: 50px">学分</th>
+        <th class="Nsb_r_list_thb" style="width: 50px">总学时</th>
+        <th class="Nsb_r_list_thb" style="width: 60px">考核方式</th>
+        <th class="Nsb_r_list_thb" style="width: 60px">考试性质</th>
+        <th class="Nsb_r_list_thb" style="width: 60px">课程属性</th>
+        <th class="Nsb_r_list_thb" style="width: 120px">课程性质</th>
+        <th class="Nsb_r_list_thb" style="width: 160px">
+          通识教育选修课程类别
+        </th>
+        <th class="Nsb_r_list_thb" style="width: 120px">成绩标记</th>
+      </tr>
+
+      <tr>
+        <td>6</td>
+        <td>2018-2019-1</td>
+        <td align="left">201416001</td>
+        <td align="left">体育（一）</td>
+
+        <td style="color: red">不及格</td>
+
+        <td>1</td>
+        <td>32</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>必修</td>
+        <td>人文与社会科学基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>7</td>
+        <td>2018-2019-1</td>
+        <td align="left">201416001</td>
+        <td align="left">体育（一）</td>
+
+        <td>及格</td>
+
+        <td>1</td>
+        <td>32</td>
+        <td>考查</td>
+        <td>补考</td>
+        <td>必修</td>
+        <td>人文与社会科学基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>8</td>
+        <td>2018-2019-1</td>
+        <td align="left">201418001</td>
+        <td align="left">军事训练</td>
+
+        <td>良好</td>
+
+        <td>2</td>
+        <td>3</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>必修</td>
+        <td>基础实践环节</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>9</td>
+        <td>2018-2019-1</td>
+        <td align="left">201419001</td>
+        <td align="left">大学生心理健康教育</td>
+
+        <td>优秀</td>
+
+        <td>1</td>
+        <td>24</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>公选</td>
+        <td>哲学人生与社会科学</td>
+        <td>哲学人生与社会科学</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>10</td>
+        <td>2018-2019-1</td>
+        <td align="left">201422001</td>
+        <td align="left">思想道德修养与法律基础</td>
+
+        <td>良好</td>
+
+        <td>3</td>
+        <td>48</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>必修</td>
+        <td>人文与社会科学基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>11</td>
+        <td>2018-2019-1</td>
+        <td align="left">201425001</td>
+        <td align="left">大学生涯与职业发展（上）</td>
+
+        <td>优秀</td>
+
+        <td>0.5</td>
+        <td>12</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>公选</td>
+        <td>创新创业类</td>
+        <td>创新创业类</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>14</td>
+        <td>2018-2019-2</td>
+        <td align="left">201411002</td>
+        <td align="left">微积分A（二）</td>
+
+        <td>60</td>
+
+        <td>6.5</td>
+        <td>100</td>
+        <td>考试</td>
+        <td>补考</td>
+        <td>必修</td>
+        <td>自然科学与技术基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>15</td>
+        <td>2018-2019-2</td>
+        <td align="left">201411002</td>
+        <td align="left">微积分A（二）</td>
+
+        <td style="color: red">50</td>
+
+        <td>6.5</td>
+        <td>100</td>
+        <td>考试</td>
+        <td>正常考试</td>
+        <td>必修</td>
+        <td>自然科学与技术基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>22</td>
+        <td>2018-2019-2</td>
+        <td align="left">201417302</td>
+        <td align="left">科技创新训练</td>
+
+        <td>优秀</td>
+
+        <td>2</td>
+        <td>2</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>公选</td>
+        <td>创新创业类</td>
+        <td>创新创业类</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>23</td>
+        <td>2018-2019-2</td>
+        <td align="left">201418011</td>
+        <td align="left">军事理论</td>
+
+        <td>优秀</td>
+
+        <td>2</td>
+        <td>32</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>必修</td>
+        <td>人文与社会科学基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>24</td>
+        <td>2018-2019-2</td>
+        <td align="left">201419002</td>
+        <td align="left">朋辈心理辅导</td>
+
+        <td>优秀</td>
+
+        <td>1.5</td>
+        <td>32</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>公选</td>
+        <td>哲学人生与社会科学</td>
+        <td>哲学人生与社会科学</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>25</td>
+        <td>2018-2019-2</td>
+        <td align="left">201422011</td>
+        <td align="left">中国近现代史纲要</td>
+
+        <td>优秀</td>
+
+        <td>2</td>
+        <td>32</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>必修</td>
+        <td>人文与社会科学基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>26</td>
+        <td>2018-2019-2</td>
+        <td align="left">201426202</td>
+        <td align="left">美术设计基础</td>
+
+        <td>优秀</td>
+
+        <td>1</td>
+        <td>24</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>公选</td>
+        <td>艺术修养与审美</td>
+        <td>艺术修养与审美</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>27</td>
+        <td>2018-2019-2</td>
+        <td align="left">201426372</td>
+        <td align="left">心理、行为与文化（网络）</td>
+
+        <td>及格</td>
+
+        <td>1</td>
+        <td>30</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>公选</td>
+        <td>哲学人生与社会科学</td>
+        <td>哲学人生与社会科学</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>28</td>
+        <td>2018-2019-2</td>
+        <td align="left">201426401</td>
+        <td align="left">中国古建筑文化与鉴赏(网络)</td>
+
+        <td>良好</td>
+
+        <td>1</td>
+        <td>28</td>
+        <td>考试</td>
+        <td>正常考试</td>
+        <td>公选</td>
+        <td>中华传统文化</td>
+        <td>中华传统文化</td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>38</td>
+        <td>2019-2020-1</td>
+        <td align="left">201411031</td>
+        <td align="left">复变函数</td>
+
+        <td style="color: red">50</td>
+
+        <td>2</td>
+        <td>32</td>
+        <td>考试</td>
+        <td>正常考试</td>
+        <td>必修</td>
+        <td>自然科学与技术基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>39</td>
+        <td>2019-2020-1</td>
+        <td align="left">201411031</td>
+        <td align="left">复变函数</td>
+
+        <td>76</td>
+
+        <td>2</td>
+        <td>32</td>
+        <td>考试</td>
+        <td>补考</td>
+        <td>必修</td>
+        <td>自然科学与技术基础必修课</td>
+        <td></td>
+        <td></td>
+      </tr>
+
+      <tr>
+        <td>46</td>
+        <td>2019-2020-1</td>
+        <td align="left">201426350</td>
+        <td align="left">航空与航天（网络）</td>
+
+        <td>---</td>
+
+        <td>1</td>
+        <td>17</td>
+        <td>考查</td>
+        <td>正常考试</td>
+        <td>公选</td>
+        <td>自然科学与人类文明</td>
+        <td>自然科学与人类文明</td>
+        <td>缺考</td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
