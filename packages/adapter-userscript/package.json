@@ -1,5 +1,5 @@
 {
-  "name": "adapter-userscript",
+  "name": "@qing-dev/adapter-userscript",
   "version": "0.1.0",
   "private": true,
   "description": "适用于 Tampermonkey 的脚本",

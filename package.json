@@ -1,22 +1,13 @@
 {
-  "name": "qing-monorepo",
+  "name": "@qing-dev/monorepo",
   "version": "0.1.0",
-  "description": "清廉街数据桥接模块",
+  "description": "清廉街数据桥接模块，用于从学校网站上获取并转换数据",
+  "private": "true",
   "scripts": {
     "prepare": "husky install",
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
     "posttest": "npm run format"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/QingLianJie/Bridge.git"
-  },
-  "author": "清廉街",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/QingLianJie/Bridge/issues"
-  },
-  "homepage": "https://github.com/QingLianJie/Bridge#readme",
   "devDependencies": {
     "c8": "^7.11.0",
     "concurrently": "^7.0.0",
