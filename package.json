@@ -7,6 +7,7 @@
     "prepare": "husky install",
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
     "posttest": "npm run format",
+    "prepublish": "npm run format && npm run test",
     "publish": "pnpm publish --access public --filter bridge"
   },
   "devDependencies": {
