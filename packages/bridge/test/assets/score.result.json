@@ -1,7 +1,6 @@
 [
   {
     "name": "2018-2019-1",
-    "total": 6,
     "scores": [
       {
         "name": "体育（一）",
@@ -9,8 +8,8 @@
         "type": "必修",
         "nature": "人文与社会科学基础必修课",
         "test": "考查",
-        "credit": "1",
-        "period": "32",
+        "credit": 1,
+        "period": 32,
         "score": "不及格"
       },
       {
@@ -19,8 +18,8 @@
         "type": "必修",
         "nature": "人文与社会科学基础必修课",
         "test": "考查",
-        "credit": "1",
-        "period": "32",
+        "credit": 1,
+        "period": 32,
         "score": "及格"
       },
       {
@@ -29,8 +28,8 @@
         "type": "必修",
         "nature": "基础实践环节",
         "test": "考查",
-        "credit": "2",
-        "period": "3",
+        "credit": 2,
+        "period": 3,
         "score": "良好"
       },
       {
@@ -39,8 +38,8 @@
         "type": "公选",
         "nature": "哲学人生与社会科学",
         "test": "考查",
-        "credit": "1",
-        "period": "24",
+        "credit": 1,
+        "period": 24,
         "score": "优秀",
         "category": "哲学人生与社会科学"
       },
@@ -50,8 +49,8 @@
         "type": "必修",
         "nature": "人文与社会科学基础必修课",
         "test": "考查",
-        "credit": "3",
-        "period": "48",
+        "credit": 3,
+        "period": 48,
         "score": "良好"
       },
       {
@@ -60,8 +59,8 @@
         "type": "公选",
         "nature": "创新创业类",
         "test": "考查",
-        "credit": "0.5",
-        "period": "12",
+        "credit": 0.5,
+        "period": 12,
         "score": "优秀",
         "category": "创新创业类"
       }
@@ -69,7 +68,6 @@
   },
   {
     "name": "2018-2019-2",
-    "total": 9,
     "scores": [
       {
         "name": "微积分A（二）",
@@ -77,9 +75,9 @@
         "type": "必修",
         "nature": "自然科学与技术基础必修课",
         "test": "考试",
-        "credit": "6.5",
-        "period": "100",
-        "score": "60"
+        "credit": 6.5,
+        "period": 100,
+        "score": 60
       },
       {
         "name": "微积分A（二）",
@@ -87,9 +85,9 @@
         "type": "必修",
         "nature": "自然科学与技术基础必修课",
         "test": "考试",
-        "credit": "6.5",
-        "period": "100",
-        "score": "50"
+        "credit": 6.5,
+        "period": 100,
+        "score": 50
       },
       {
         "name": "科技创新训练",
@@ -97,8 +95,8 @@
         "type": "公选",
         "nature": "创新创业类",
         "test": "考查",
-        "credit": "2",
-        "period": "2",
+        "credit": 2,
+        "period": 2,
         "score": "优秀",
         "category": "创新创业类"
       },
@@ -108,8 +106,8 @@
         "type": "必修",
         "nature": "人文与社会科学基础必修课",
         "test": "考查",
-        "credit": "2",
-        "period": "32",
+        "credit": 2,
+        "period": 32,
         "score": "优秀"
       },
       {
@@ -118,8 +116,8 @@
         "type": "公选",
         "nature": "哲学人生与社会科学",
         "test": "考查",
-        "credit": "1.5",
-        "period": "32",
+        "credit": 1.5,
+        "period": 32,
         "score": "优秀",
         "category": "哲学人生与社会科学"
       },
@@ -129,8 +127,8 @@
         "type": "必修",
         "nature": "人文与社会科学基础必修课",
         "test": "考查",
-        "credit": "2",
-        "period": "32",
+        "credit": 2,
+        "period": 32,
         "score": "优秀"
       },
       {
@@ -139,8 +137,8 @@
         "type": "公选",
         "nature": "艺术修养与审美",
         "test": "考查",
-        "credit": "1",
-        "period": "24",
+        "credit": 1,
+        "period": 24,
         "score": "优秀",
         "category": "艺术修养与审美"
       },
@@ -150,8 +148,8 @@
         "type": "公选",
         "nature": "哲学人生与社会科学",
         "test": "考查",
-        "credit": "1",
-        "period": "30",
+        "credit": 1,
+        "period": 30,
         "score": "及格",
         "category": "哲学人生与社会科学"
       },
@@ -161,8 +159,8 @@
         "type": "公选",
         "nature": "中华传统文化",
         "test": "考试",
-        "credit": "1",
-        "period": "28",
+        "credit": 1,
+        "period": 28,
         "score": "良好",
         "category": "中华传统文化"
       }
@@ -170,7 +168,6 @@
   },
   {
     "name": "2019-2020-1",
-    "total": 3,
     "scores": [
       {
         "name": "复变函数",
@@ -178,9 +175,9 @@
         "type": "必修",
         "nature": "自然科学与技术基础必修课",
         "test": "考试",
-        "credit": "2",
-        "period": "32",
-        "score": "50"
+        "credit": 2,
+        "period": 32,
+        "score": 50
       },
       {
         "name": "复变函数",
@@ -188,9 +185,9 @@
         "type": "必修",
         "nature": "自然科学与技术基础必修课",
         "test": "考试",
-        "credit": "2",
-        "period": "32",
-        "score": "76"
+        "credit": 2,
+        "period": 32,
+        "score": 76
       },
       {
         "name": "航空与航天（网络）",
@@ -198,8 +195,8 @@
         "type": "公选",
         "nature": "自然科学与人类文明",
         "test": "考查",
-        "credit": "1",
-        "period": "17",
+        "credit": 1,
+        "period": 17,
         "score": "---",
         "category": "自然科学与人类文明",
         "mark": "缺考"

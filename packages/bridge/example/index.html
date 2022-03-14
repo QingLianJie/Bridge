@@ -64,7 +64,20 @@
 
     <section id="timetable">
       <h2>课表</h2>
-      <button>获取课表</button>
+      <div>
+        <select name="term">
+          <option value="">当前</option>
+          <option value="2018-2019-1">2018-2019-1</option>
+          <option value="2018-2019-2">2018-2019-2</option>
+          <option value="2019-2020-1">2019-2020-1</option>
+          <option value="2019-2020-2">2019-2020-2</option>
+          <option value="2020-2021-1">2020-2021-1</option>
+          <option value="2020-2021-2">2020-2021-2</option>
+          <option value="2021-2022-1">2021-2022-1</option>
+          <option value="2021-2022-2">2021-2022-2</option>
+        </select>
+        <button>获取课表</button>
+      </div>
       <pre></pre>
     </section>
 
@@ -84,7 +97,7 @@
           check.result.textContent = '已登录过'
         } catch (error) {
           console.error(error)
-          alert('需要重新登录')
+          alert(error.message)
           check.result.textContent = '需要重新登录'
         }
       }
@@ -172,23 +185,24 @@
           score.pre.textContent = JSON.stringify(res, null, 2)
         } catch (error) {
           console.error(error)
-          alert('需要重新登录')
+          alert(error.message)
         }
       }
 
       const timetable = {
         button: document.querySelector('#timetable button'),
+        select: document.querySelector('#timetable select'),
         pre: document.querySelector('#timetable pre'),
       }
 
       timetable.button.onclick = async () => {
         try {
-          const res = await bridge.timetable()
+          const res = await bridge.timetable(timetable.select.value)
           console.log(res)
           timetable.pre.textContent = JSON.stringify(res, null, 2)
         } catch (error) {
           console.error(error)
-          alert('需要重新登录')
+          alert(error.message)
         }
       }
     </script>

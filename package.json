@@ -19,6 +19,7 @@
   "homepage": "https://github.com/QingLianJie/Bridge#readme",
   "devDependencies": {
     "c8": "^7.11.0",
+    "concurrently": "^7.0.0",
     "happy-dom": "^2.46.3",
     "husky": "^7.0.4",
     "lint-staged": "^12.3.5",

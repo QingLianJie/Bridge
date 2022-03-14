@@ -1,96 +1,138 @@
-const NUMBER_MAP = {
-  0: '一',
-  1: '二',
-  2: '三',
-  3: '四',
-  4: '五',
-  5: '六',
-  6: '日',
-}
+const weekdays = [
+  '星期一',
+  '星期二',
+  '星期三',
+  '星期四',
+  '星期五',
+  '星期六',
+  '星期日',
+]
+
+// prettier-ignore
+const sections = [
+  '第一大节', '第一大节',  // 1-2 
+  '第二大节', '第二大节', '第二大节', // 3-5
+  '第三大节', '第三大节',  // 6-7
+  '第四大节', '第四大节', '第四大节', // 8-10
+  '第五大节', '第五大节', '第五大节', // 11-13
+]
+
+// 大节与小节的映射
+const group = [
+  [1, 2],
+  [3, 4, 5],
+  [6, 7],
+  [8, 9, 10],
+  [11, 12, 13],
+]
+
+const range = (start: number, end: number = start) =>
+  Array(end - start + 1)
+    .fill(0)
+    .map((_, i) => i + start)
 
 /**
  * 解析课表数据
  * @param {string} html 课表页面的 HTML 文件
- * @param week 周数
  * @returns JSON 格式的数据
  */
-export const timetable = (html: string, week: number) => {
+export const timetable = (html: string) => {
   const dom = new DOMParser().parseFromString(html, 'text/html')
-  const form = dom.querySelector('#Form1')
+  const table = dom.querySelector('#kbtable')
+  if (!table) return
 
-  if (form === null) return
-  const result: UserTimeTableItem = { week: week, row: [], ps: [] }
-  form.querySelectorAll('tr').forEach(tr => {
-    if (tr.querySelectorAll('th').length !== 1) return
-    const row: TimeTableRow = {
-      name: tr.querySelector('th')!.textContent!.trim(),
-      col: [],
-    }
-    const tds = tr.querySelectorAll('td')
-    if (tds.length !== 1) {
-      tds.forEach(function (td, index) {
-        const ele = td.querySelector('.kbcontent')!
-        const grid: Array<Array<string>> = []
-        let course: Array<string> = []
-        ele.innerHTML
-          .replaceAll('<br>', '\n')
-          .replaceAll(/<(.*?)>/g, '')
-          .replaceAll('&nbsp;', '')
-          .split('\n')
-          .forEach(function (val) {
-            if (val.length) {
-              val === '---------------------'
-                ? (grid.push(course), (course = []))
-                : course.push(val)
-            }
+  // 获取当前学期
+  const term = dom.querySelector('#xnxq01id option[selected]')?.textContent
+
+  // 获取课表中的最大周数
+  const max = Math.max(
+    ...(table.textContent?.match(/(\d+\(周\))|(\d+周)/g) || [])
+      .map(str => str.replace(/(\(周\))|(周)/g, ''))
+      .map(str => Number(str))
+  )
+
+  // 预先生成表格
+  const data: TimetableWeek[] = range(1, max).map(i => ({
+    name: `第 ${i} 周`,
+    rows: range(1, 14).map(j => {
+      if (j === 14)
+        return { name: '备注', cols: [{ name: '全部', courses: [] }] }
+
+      return {
+        name: sections[j - 1],
+        cols: range(1, 7).map(k => ({ name: weekdays[k - 1], courses: [] })),
+      }
+    }),
+  }))
+
+  ;[...table.querySelectorAll('tr')].slice(1).map((tr, m) => {
+    // 第几大节
+    const head = tr.querySelector('th')?.textContent
+    const cols = tr.querySelectorAll('td')
+
+    if (cols.length === 1) {
+      // 备注部分
+      const courses = cols[0].textContent?.trim().split(';')
+      courses?.map(course => {
+        if (course.length === 0) return
+        const item = course.split(/\s+/).filter(Boolean)
+        const week = item[2]
+          .replace('周', '')
+          .split('-')
+          .map(w => Number(w))
+
+        // 将课程添加到对应的周数
+        range(week[0], week[1]).map(i => {
+          data[i - 1].rows[13].cols[0].courses.push({
+            name: item[0],
+            teacher: item[1].split(','),
+            week: range(week[0], week[1]),
           })
-        if (course.length) grid.push(course)
-        const colItem: TimeTableCol = {
-          name: `星期${(NUMBER_MAP as any)[index]}`,
-          course: [],
-        }
-        // Process course
-        for (let courseItem of grid) {
-          // if (courseItem.length !== 5) continue;
-          while (courseItem.length < 5) courseItem.push('')
-          console.log(courseItem)
-          colItem.course.push({
-            name: courseItem[0],
-            teacher: courseItem[1].split(','),
-            week: (function (raw: string): Array<CourseWeekItem> {
-              return raw.split(',').map(value => {
-                const t = value.replace('(周)', '').split('-')
-                if (t.length === 1)
-                  return { from: Number(t[0]), to: Number(t[0]) }
-                if (t.length === 2)
-                  return { from: Number(t[0]), to: Number(t[1]) }
-                return { from: -1, to: -1 }
-              })
-            })(courseItem[2]),
-            section: (function (raw: string): Array<number> {
-              const result: Array<number> = []
-              raw = raw.replace(/\[|\]|节/g, '')
-              for (let i = 0; i < raw.length; i += 2)
-                result.push(Number(raw.substring(i, i + 2)))
-              return result
-            })(courseItem[3]),
-            location: courseItem[4],
+        })
+      })
+    } else {
+      // 课程部分
+      ;[...cols].map((col, n) => {
+        const courses = col
+          .querySelector('.kbcontent')
+          ?.innerHTML?.trim()
+          .replace(/&nbsp;/g, '')
+          .split(/---{3,}/g)
+          .map(course =>
+            course
+              .trim()
+              .split('<br>')
+              .filter(Boolean)
+              .map(w => w.replace(/<\/?font.*?>/g, ''))
+          )
+
+        // 一个格子里可能有多个课程
+        courses?.map(course => {
+          if (course.length === 0) return
+          const section = course[3].match(/\d{2}/g)?.map(w => Number(w))
+          const week = course[2]
+            .replace(/\(周\)/g, '')
+            .split(',')
+            .map(w => w.split('-').map(w => Number(w)))
+            .map(w => range(w[0], w[1]))
+            .flat()
+
+          week.map(i => {
+            section?.map(j => {
+              if (group[m].includes(j))
+                data[i - 1].rows[j - 1].cols[n].courses.push({
+                  name: course[0],
+                  teacher: course[1].split(','),
+                  week,
+                  location: course[4],
+                  section,
+                })
+            })
           })
-        }
-        row.col.push(colItem)
+        })
       })
-      result.row.push(row)
-    }
-    // 表末备注
-    else {
-      const td = tds[0]
-      const ps: Array<string> = []
-      td.textContent!.split(';').forEach(val => {
-        const content = val.replaceAll(' ', '').replaceAll('\xa0', '')
-        if (content.length !== 0) ps.push(content)
-      })
-      result.ps = result.ps.concat(ps)
     }
   })
-  return result
+
+  return { name: term, weeks: data }
 }
