@@ -5,6 +5,7 @@ on:
       - main
     paths:
       - packages/adapter-userscript/**
+      - .github/workflows/build-userscript.yml
 
 jobs:
   build:
@@ -29,4 +30,4 @@ jobs:
           REPO: self
           BRANCH: userscript-dist
           FOLDER: packages/adapter-userscript/dist
-          SSH_PRIVATE_KEY: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
