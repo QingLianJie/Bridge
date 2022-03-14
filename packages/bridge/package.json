@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "description": "清廉街数据桥接模块，用于从学校网站上获取并转换数据",
   "main": "src/index.ts",
+  "types": "types.d.ts",
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/QingLianJie/Bridge.git"
+    "url": "git+https://github.com/QingLianJie/Bridge.git",
+    "directory": "packages/bridge"
   },
   "author": "清廉街",
   "homepage": "https://github.com/QingLianJie/Bridge#readme",
