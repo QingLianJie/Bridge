@@ -52,10 +52,14 @@ select {
   font-size: 1rem;
 }
 
-pre {
+textarea {
   width: 100%;
-  max-height: 90vh;
+  max-width: 600px;
+  height: 80vh;
   padding: 1rem;
   overflow: auto;
   background-color: #f4f4f4;
+  font-size: 1rem;
+  line-height: inherit;
+  font-family: Consolas 'HarmonyOS Sans SC', 'MiSans', monospace;
 }

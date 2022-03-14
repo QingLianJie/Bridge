@@ -26,33 +26,24 @@ const group = [
   [11, 12, 13],
 ]
 
+/**
+ * 生成一个数组
+ * @param start 从
+ * @param end 到
+ * @returns 数组
+ */
 const range = (start: number, end: number = start) =>
   Array(end - start + 1)
     .fill(0)
     .map((_, i) => i + start)
 
 /**
- * 解析课表数据
- * @param {string} html 课表页面的 HTML 文件
- * @returns JSON 格式的数据
+ * 生成一个空白课表
+ * @param week 周数
+ * @returns 空白课表
  */
-export const timetable = (html: string) => {
-  const dom = new DOMParser().parseFromString(html, 'text/html')
-  const table = dom.querySelector('#kbtable')
-  if (!table) return
-
-  // 获取当前学期
-  const term = dom.querySelector('#xnxq01id option[selected]')?.textContent
-
-  // 获取课表中的最大周数
-  const max = Math.max(
-    ...(table.textContent?.match(/(\d+\(周\))|(\d+周)/g) || [])
-      .map(str => str.replace(/(\(周\))|(周)/g, ''))
-      .map(str => Number(str))
-  )
-
-  // 预先生成表格
-  const data: TimetableWeek[] = range(1, max).map(i => ({
+const create = (week: number = 1): TimetableWeek[] => {
+  return range(1, week).map(i => ({
     name: `第 ${i} 周`,
     rows: range(1, 14).map(j => {
       if (j === 14)
@@ -64,15 +55,44 @@ export const timetable = (html: string) => {
       }
     }),
   }))
+}
+
+/**
+ * 解析课表数据
+ * @param {string} html 课表页面的 HTML 文件
+ * @returns JSON 格式的数据
+ */
+export const timetable = (html: string) => {
+  const dom = new DOMParser().parseFromString(html, 'text/html')
+  const table = dom.querySelector('#kbtable')
+  if (!table) return { name: '无法获取课表', weeks: create() }
+
+  // 获取课表中的最大周数
+  let max = Math.max(
+    ...(table.textContent?.match(/(\d+\(周\))|(\d+周)/g) || [])
+      .map(str => str.replace(/(\(周\))|(周)/g, ''))
+      .map(str => Number(str))
+  )
+  if (max < 1) return { name: '空白课表', weeks: create() }
+
+  // 获取当前学期
+  const term = dom
+    .querySelector('#xnxq01id option[selected]')
+    ?.textContent?.trim()
+
+  // 预先生成表格
+  const data: TimetableWeek[] = create(max)
 
   ;[...table.querySelectorAll('tr')].slice(1).map((tr, m) => {
-    // 第几大节
-    const head = tr.querySelector('th')?.textContent
     const cols = tr.querySelectorAll('td')
 
     if (cols.length === 1) {
       // 备注部分
-      const courses = cols[0].textContent?.trim().split(';')
+      const courses = cols[0].textContent
+        ?.replace(/&nbsp;/g, ' ')
+        .trim()
+        .split(';')
+
       courses?.map(course => {
         if (course.length === 0) return
         const item = course.split(/\s+/).filter(Boolean)
@@ -95,13 +115,13 @@ export const timetable = (html: string) => {
       ;[...cols].map((col, n) => {
         const courses = col
           .querySelector('.kbcontent')
-          ?.innerHTML?.trim()
-          .replace(/&nbsp;/g, '')
+          ?.innerHTML?.replace(/&nbsp;/g, ' ')
+          .trim()
           .split(/---{3,}/g)
           .map(course =>
             course
               .trim()
-              .split('<br>')
+              .split(/<br\s*\/?>/g)
               .filter(Boolean)
               .map(w => w.replace(/<\/?font.*?>/g, ''))
           )
@@ -109,9 +129,10 @@ export const timetable = (html: string) => {
         // 一个格子里可能有多个课程
         courses?.map(course => {
           if (course.length === 0) return
+
           const section = course[3].match(/\d{2}/g)?.map(w => Number(w))
           const week = course[2]
-            .replace(/\(周\)/g, '')
+            .replace(/\(双?周\)/g, '')
             .split(',')
             .map(w => w.split('-').map(w => Number(w)))
             .map(w => range(w[0], w[1]))

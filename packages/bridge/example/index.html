@@ -59,7 +59,7 @@
     <section id="score">
       <h2>成绩</h2>
       <button>获取成绩</button>
-      <pre></pre>
+      <textarea></textarea>
     </section>
 
     <section id="timetable">
@@ -75,10 +75,11 @@
           <option value="2020-2021-2">2020-2021-2</option>
           <option value="2021-2022-1">2021-2022-1</option>
           <option value="2021-2022-2">2021-2022-2</option>
+          <option value="2017-2018-1">2017-2018-1</option>
         </select>
         <button>获取课表</button>
       </div>
-      <pre></pre>
+      <textarea></textarea>
     </section>
 
     <script type="module">
@@ -175,14 +176,14 @@
 
       const score = {
         button: document.querySelector('#score button'),
-        pre: document.querySelector('#score pre'),
+        textarea: document.querySelector('#score textarea'),
       }
 
       score.button.onclick = async () => {
         try {
           const res = await bridge.score()
           console.log(res)
-          score.pre.textContent = JSON.stringify(res, null, 2)
+          score.textarea.textContent = JSON.stringify(res, null, 2)
         } catch (error) {
           console.error(error)
           alert(error.message)
@@ -192,14 +193,14 @@
       const timetable = {
         button: document.querySelector('#timetable button'),
         select: document.querySelector('#timetable select'),
-        pre: document.querySelector('#timetable pre'),
+        textarea: document.querySelector('#timetable textarea'),
       }
 
       timetable.button.onclick = async () => {
         try {
           const res = await bridge.timetable(timetable.select.value)
           console.log(res)
-          timetable.pre.textContent = JSON.stringify(res, null, 2)
+          timetable.textarea.textContent = JSON.stringify(res, null, 2)
         } catch (error) {
           console.error(error)
           alert(error.message)
