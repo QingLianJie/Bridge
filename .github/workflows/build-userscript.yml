@@ -1,0 +1,32 @@
+name: 编译 UserScript 脚本文件
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - packages/adapter-userscript/**
+
+jobs:
+  build:
+    name: 编译 UserScript 脚本文件
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: 配置 Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: 安装依赖并编译
+        run: |
+          npm i -g pnpm
+          pnpm i
+          pnpm run build --filter adapter-userscript
+
+      - name: 推送文件到分支
+        uses: s0/git-publish-subdir-action@develop
+        env:
+          REPO: self
+          BRANCH: userscript-dist
+          FOLDER: packages/adapter-userscript/dist
+          SSH_PRIVATE_KEY: ${{ secrets.GITHUB_TOKEN }}

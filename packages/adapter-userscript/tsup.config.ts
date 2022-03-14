@@ -10,6 +10,7 @@ export const banner = `// ==UserScript==
 // @homepage     https://github.com/QingLianJie/Bridge
 // @license      MIT
 // @match        https://qinglianjie.cn/*
+// @match        https://qing-dev.dist.run/*
 // @run-at       document-start
 // @grant        unsafeWindow
 // @grant        GM_xmlhttpRequest
@@ -24,4 +25,8 @@ export default defineConfig({
   splitting: false,
   clean: true,
   banner: { js: banner },
+  esbuildOptions(options) {
+    options.outdir = ''
+    options.outfile = './dist/qing-bridge-adapter.user.js'
+  },
 })

@@ -8,7 +8,7 @@ unsafeWindow.Fetcher = async (options: FetcherOptions) => {
       responseType: 'text',
       headers: options.headers || {},
       // FormData 字符串形式，例如 username=123456&password=abc&captcha=0000
-      data: options.form || '',
+      data: options.form || undefined,
       onload: (res: MonkeyXhrResponse) => {
         resolve(res.responseText)
       },

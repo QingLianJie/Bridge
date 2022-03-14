@@ -2,4 +2,4 @@
 
 适用于 [Tampermonkey](https://www.tampermonkey.net/) 的脚本。
 
-[`cd ~`](../../README.md)
+[`cd ~`](../../)
