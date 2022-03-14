@@ -1,0 +1,448 @@
+{
+  "name": "空白课表",
+  "weeks": [
+    {
+      "name": "第 1 周",
+      "rows": [
+        {
+          "name": "第一大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第一大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第二大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第二大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第二大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第三大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第三大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第四大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第四大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第四大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第五大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第五大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "第五大节",
+          "cols": [
+            {
+              "name": "星期一",
+              "courses": []
+            },
+            {
+              "name": "星期二",
+              "courses": []
+            },
+            {
+              "name": "星期三",
+              "courses": []
+            },
+            {
+              "name": "星期四",
+              "courses": []
+            },
+            {
+              "name": "星期五",
+              "courses": []
+            },
+            {
+              "name": "星期六",
+              "courses": []
+            },
+            {
+              "name": "星期日",
+              "courses": []
+            }
+          ]
+        },
+        {
+          "name": "备注",
+          "cols": [
+            {
+              "name": "全部",
+              "courses": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

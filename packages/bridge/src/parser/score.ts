@@ -6,7 +6,7 @@
 export const score = (html: string): Score[] => {
   const dom = new DOMParser().parseFromString(html, 'text/html')
   const table = dom.querySelector('#dataList')
-  if (table === null) return []
+  if (!table) return []
 
   const terms = new Map<string, ScoreItem[]>()
 

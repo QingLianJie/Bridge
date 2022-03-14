@@ -1,10 +1,12 @@
 import fs from 'fs'
-import { expect, test } from 'vitest'
+import { describe, expect, test } from 'vitest'
 import { score } from '../src/parser/score'
 
-const html = fs.readFileSync('./test/assets/score.test.html', 'utf-8')
-const json = fs.readFileSync('./test/assets/score.result.json', 'utf-8')
+const base = './test/assets/score/score'
+const html = fs.readFileSync(`${base}.test.html`, 'utf-8')
+const json = JSON.parse(fs.readFileSync(`${base}.result.json`, 'utf-8'))
 
-test('解析成绩页面', () => {
-  expect(score(html)).toMatchObject(JSON.parse(json))
+describe('解析成绩页面', () => {
+  test('正常页面', () => expect(score(html)).toMatchObject(json))
+  test('空白页面', () => expect(score('')).toMatchObject([]))
 })
