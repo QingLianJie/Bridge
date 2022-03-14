@@ -1,50 +1,39 @@
-interface map {
-  [index: string]: Array<UserScoreItem>
-}
-
 /**
  * 解析成绩数据
  * @param {string} html 成绩页面的 HTML 文件
  * @returns JSON 格式的成绩数据
  */
-export const score = (html: string): Array<UserTermScore> => {
+export const score = (html: string): Score[] => {
   const dom = new DOMParser().parseFromString(html, 'text/html')
-  const data = dom.querySelector('#dataList')
-  const termMap: map = {}
+  const table = dom.querySelector('#dataList')
+  if (table === null) return []
 
-  if (data == null) return []
+  const terms = new Map<string, ScoreItem[]>()
 
-  data.querySelectorAll('tr').forEach((tr: HTMLTableRowElement) => {
-    const row: Array<string> = []
-    tr.querySelectorAll('td').forEach((td: HTMLTableCellElement) => {
-      row.push(td.textContent!)
-    })
+  table.querySelectorAll('tr').forEach((tr: HTMLTableRowElement) => {
+    const row = [...tr.querySelectorAll('td')].map(
+      (td: HTMLTableCellElement) => td.innerText
+    )
+
     if (row.length !== 13) return
-    let term = row[1]
-    let record = {
-      name: row[3],
-      id: row[2],
-      type: row[9],
-      nature: row[10],
-      test: row[7],
-      credit: row[5],
-      period: row[6],
-      score: row[4],
-      category: row[11],
-      mark: row[12],
+
+    const term = row[1]
+    const record = {
+      id: row[2], // 课程编号
+      name: row[3], // 课程名称
+      score: isNaN(Number(row[4])) ? row[4] : Number(row[4]), //成绩
+      credit: Number(row[5]), // 学分
+      period: Number(row[6]), // 总学时
+      test: row[7], // 考核方式
+      from: row[8], // 考试性质
+      type: row[9], // 课程属性
+      nature: row[10], // 课程性质
+      category: row[11] || undefined, // 通识教育选修课程类别
+      mark: row[12] || undefined, // 成绩标记
     }
-    if (!(term in termMap)) termMap[term] = []
-    termMap[term].push(record)
+
+    terms.set(term, [...(terms.get(term) || []), record])
   })
 
-  const result: Array<UserTermScore> = []
-  for (let term in termMap) {
-    let scores = termMap[term]
-    result.push({
-      name: term,
-      total: scores.length,
-      scores: scores,
-    })
-  }
-  return result
+  return [...terms].map(([name, scores]) => ({ name, scores }))
 }

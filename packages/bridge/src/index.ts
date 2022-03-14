@@ -2,6 +2,7 @@ import {
   学生个人中心,
   当前课表,
   所有成绩,
+  查询课表,
   登录,
   登录页面,
   获取验证码,
@@ -62,11 +63,11 @@ export class Bridge {
       // 只有登录页面标题为「哈尔滨工程大学统一身份认证」时
       // 才是正确的登录页面，否则要重新进入这个登录页面
       console.debug(`不符合条件，需要重新登录`, text)
-      if (html.includes('<title>哈尔滨工程大学统一身份认证</title>')) {
+      if (html.includes(`<title>哈尔滨工程大学统一身份认证</title>`)) {
         await this.setLoginPayload(html)
         console.debug(`检测到登录页面，已设置 Payload`)
       }
-      throw new Error('需要重新登录')
+      throw new Error(`需要重新登录`)
     }
     console.debug(`符合条件，无需重新登录`, text)
   }
@@ -111,7 +112,7 @@ export class Bridge {
       }),
     }).catch(error => {
       console.error(error)
-      throw new Error('登录失败')
+      throw new Error(`登录失败`)
     })
 
     console.debug(`登录完成，清除无用 Payload`)
@@ -127,7 +128,7 @@ export class Bridge {
       ...退出登录,
     }).catch(error => {
       console.error(error)
-      throw new Error('退出登录失败')
+      throw new Error(`退出登录失败`)
     })
     console.debug(`退出登录完成`)
   }
@@ -141,7 +142,7 @@ export class Bridge {
       .then(res => JSON.parse(res))
       .catch(error => {
         console.error(error)
-        throw new Error('获取验证码失败')
+        throw new Error(`获取验证码失败`)
       })
     console.debug(`获取验证码完成`, captcha)
     return captcha
@@ -156,11 +157,11 @@ export class Bridge {
       ...学生个人中心,
     }).catch(error => {
       console.error(error)
-      throw new Error('获取学生个人中心失败')
+      throw new Error(`获取学生个人中心失败`)
     })
 
     console.debug(`获取学生个人中心完成`)
-    await this.checkLogin(html, '学生个人中心')
+    await this.checkLogin(html, `学生个人中心`)
     return html
   }
 
@@ -174,28 +175,46 @@ export class Bridge {
       form: convertPayload({ ...所有成绩.payload }),
     }).catch(error => {
       console.error(error)
-      throw new Error('获取所有成绩失败')
+      throw new Error(`获取所有成绩失败`)
     })
 
     console.debug(`获取所有成绩完成`)
-    await this.checkLogin(html, '学生个人考试成绩')
+    await this.checkLogin(html, `学生个人考试成绩`)
     return score(html)
   }
 
   /**
-   * 获取当前课表，需要登录
+   * 获取课表，需要登录
+   * @param {string} term 课表学期，默认为最新
    * @returns 当前课表页面
    */
-  async timetable() {
+  async timetable(term?: string) {
+    if (term) {
+      const html = await this.fetcher({
+        ...查询课表,
+        form: convertPayload({
+          ...查询课表.payload,
+          xnxq01id: term,
+        }),
+      }).catch(error => {
+        console.error(error)
+        throw new Error(`获取 ${term} 课表失败`)
+      })
+
+      console.debug(`获取 ${term} 课表完成`)
+      await this.checkLogin(html, `学期理论课表`)
+      return timetable(html)
+    }
+
     const html = await this.fetcher({
       ...当前课表,
     }).catch(error => {
       console.error(error)
-      throw new Error('获取当前课表失败')
+      throw new Error(`获取当前课表失败`)
     })
 
     console.debug(`获取当前课表完成`)
-    await this.checkLogin(html, '学期理论课表')
-    return timetable(html, 1)
+    await this.checkLogin(html, `学期理论课表`)
+    return timetable(html)
   }
 }

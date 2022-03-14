@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "tsup --watch",
     "build": "tsup",
-    "example": "tsup -d example --clean false && serve example",
+    "example": "concurrently \"tsup -d example --watch --clean false\" \"serve example\"",
     "test": "vitest",
     "coverage": "vitest run --coverage"
   },

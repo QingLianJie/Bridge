@@ -9,71 +9,63 @@ interface FetcherRequset {
   }
 }
 
-type Captcha = {
+interface Captcha {
   captcha: string
   token: token
 }
 
-type CaptchaResponse = {
+interface CaptchaResponse {
   img: string
   token: token
 }
 
-type User = {
+interface User {
   username: string
   password: string
 }
 
-/** 成绩 */
-interface UserTermScore {
-  name: string //学期
-  total: number
-  scores: UserScoreItem[]
+interface Score {
+  name: string // 学期
+  scores: ScoreItem[]
 }
 
-interface UserScoreItem {
+interface ScoreItem {
   name: string
   id: string
   type: string
-  category: string
+  nature: string
   test: string
-  credit: string
-  period: string
-  score: string
-  statistics?: object
+  credit: number
+  period: number
+  score: string | number
+  category?: string
+  mark?: string
 }
 
-/** 课表 */
-interface CourseWeekItem {
-  from: number
-  to: number
+interface Timetable {
+  name: string // 学期
+  weeks: TimetableWeek[]
 }
 
-interface TimeTableCourseItem {
+interface TimetableWeek {
+  name: string // 第几周
+  rows: TimetableRow[]
+}
+
+interface TimetableRow {
+  name: string // 第几大节
+  cols: TimetableCol[]
+}
+
+interface TimetableCol {
+  name: string // 星期几
+  courses: TimetableCourse[]
+}
+
+interface TimetableCourse {
   name: string
-  teacher: Array<string>
-  week: Array<CourseWeekItem>
-  section: Array<number>
-  location: string
-}
-
-interface TimeTableCol {
-  name: string
-  course: Array<TimeTableCourseItem>
-}
-
-interface TimeTableRow {
-  name: string
-  col: Array<TimeTableCol>
-}
-
-interface UserTimeTableItem {
-  week: number
-  row: Array<TimeTableRow>
-  ps: Array<string>
-}
-
-interface UserTimeTable {
-  name: string //学期
-  weeks: Array<UserTimeTableItem>
+  teacher: string[]
+  week: number[]
+  location?: string
+  section?: number[]
 }
