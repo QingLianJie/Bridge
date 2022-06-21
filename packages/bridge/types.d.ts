@@ -11,12 +11,12 @@ export interface FetcherRequset {
 
 export interface Captcha {
   captcha: string
-  token: token
+  token: string
 }
 
 export interface CaptchaResponse {
   img: string
-  token: token
+  token: string
 }
 
 export interface User {

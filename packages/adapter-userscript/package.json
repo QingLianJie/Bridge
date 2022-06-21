@@ -6,7 +6,7 @@
   "main": "src/index.ts",
   "scripts": {
     "dev": "tsup --watch",
-    "build": "tsup"
+    "build": "tsup --dts"
   },
   "license": "MIT"
 }
