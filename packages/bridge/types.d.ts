@@ -1,4 +1,4 @@
-interface FetcherRequset {
+export interface FetcherRequset {
   url: string
   method: 'GET' | 'POST'
   headers?: {
@@ -9,27 +9,27 @@ interface FetcherRequset {
   }
 }
 
-interface Captcha {
+export interface Captcha {
   captcha: string
   token: token
 }
 
-interface CaptchaResponse {
+export interface CaptchaResponse {
   img: string
   token: token
 }
 
-interface User {
+export interface User {
   username: string
   password: string
 }
 
-interface Score {
+export interface Score {
   name: string // 学期
   scores: ScoreItem[]
 }
 
-interface ScoreItem {
+export interface ScoreItem {
   name: string
   id: string
   type: string
@@ -42,27 +42,27 @@ interface ScoreItem {
   mark?: string
 }
 
-interface Timetable {
+export interface Timetable {
   name: string // 学期
   weeks: TimetableWeek[]
 }
 
-interface TimetableWeek {
+export interface TimetableWeek {
   name: string // 第几周
   rows: TimetableRow[]
 }
 
-interface TimetableRow {
+export interface TimetableRow {
   name: string // 第几大节
   cols: TimetableCol[]
 }
 
-interface TimetableCol {
+export interface TimetableCol {
   name: string // 星期几
   courses: TimetableCourse[]
 }
 
-interface TimetableCourse {
+export interface TimetableCourse {
   name: string
   teacher: string[]
   week: number[]

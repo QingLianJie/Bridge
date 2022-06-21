@@ -1,3 +1,5 @@
+import type { TimetableWeek } from '../../types'
+
 const weekdays = [
   '星期一',
   '星期二',

@@ -1,4 +1,5 @@
-import { MonkeyXhrResponse } from '../types'
+import type { FetcherOptions } from '../../../types'
+import type { MonkeyXhrResponse } from '../types'
 
 unsafeWindow.Fetcher = async (options: FetcherOptions) => {
   return new Promise((resolve, reject) => {

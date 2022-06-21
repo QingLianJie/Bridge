@@ -1,3 +1,5 @@
+import type { Score, ScoreItem } from '../../types'
+
 /**
  * 解析成绩数据
  * @param {string} html 成绩页面的 HTML 文件

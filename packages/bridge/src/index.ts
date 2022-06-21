@@ -1,3 +1,5 @@
+import type { Fetcher } from '../../../types'
+import type { User, Captcha, CaptchaResponse } from '../types'
 import {
   学生个人中心,
   当前课表,
