@@ -7,8 +7,8 @@
     "prepare": "husky install",
     "format": "prettier --loglevel warn --write \"**/*.{ts,tsx,css,md}\"",
     "posttest": "npm run format",
-    "prepublish": "npm run format && pnpm run test --filter bridge",
-    "publish": "pnpm publish --access public --filter bridge"
+    "prepublish": "npm run format && pnpm --filter bridge test",
+    "publish": "pnpm --filter bridge publish --access public "
   },
   "devDependencies": {
     "c8": "^7.11.3",

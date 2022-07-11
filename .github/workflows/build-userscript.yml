@@ -22,7 +22,7 @@ jobs:
         run: |
           npm i -g pnpm
           pnpm i
-          pnpm run build --filter adapter-userscript
+          pnpm --filter adapter-userscript build
 
       - name: 推送文件到分支
         uses: s0/git-publish-subdir-action@develop
