@@ -1,10 +1,11 @@
 import { defineConfig } from 'tsup'
+import { version } from './package.json'
 
 export const banner = `// ==UserScript==
 // @name         清廉街 Bridge - UserScript
 // @namespace    https://github.com/QingLianJie/Bridge
 // @description  用于从学校网站上获取数据的一个插件。
-// @version      0.1.0
+// @version      ${version}
 // @author       QingLianJie
 // @copyright    2022 © QingLianJie
 // @homepage     https://github.com/QingLianJie/Bridge

@@ -4,6 +4,10 @@ declare global {
   const unsafeWindow: Window &
     typeof globalThis & {
       Fetcher: Fetcher
+      FetcherInfo: {
+        name: string
+        version: string
+      }
     }
 
   function GM_xmlhttpRequest(details: MonkeyXhrDetails): {

@@ -19,3 +19,8 @@ unsafeWindow.Fetcher = async (options: FetcherOptions) => {
     })
   })
 }
+
+unsafeWindow.FetcherInfo = {
+  name: 'userscript',
+  version: 'v0.2.0',
+}
