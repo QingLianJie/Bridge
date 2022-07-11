@@ -2,7 +2,7 @@
 // @name         清廉街 Bridge - UserScript
 // @namespace    https://github.com/QingLianJie/Bridge
 // @description  用于从学校网站上获取数据的一个插件。
-// @version      0.1.0
+// @version      0.2.0
 // @author       QingLianJie
 // @copyright    2022 © QingLianJie
 // @homepage     https://github.com/QingLianJie/Bridge
@@ -34,4 +34,8 @@ unsafeWindow.Fetcher = async (options) => {
       }
     });
   });
+};
+unsafeWindow.FetcherInfo = {
+  name: "userscript",
+  version: "v0.2.0"
 };
