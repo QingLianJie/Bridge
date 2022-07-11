@@ -25,16 +25,13 @@ export interface User {
 }
 
 export interface Score {
-  name: string // 学期
-  scores: ScoreItem[]
-}
-
-export interface ScoreItem {
+  term: string
   name: string
   id: string
   type: string
   nature: string
   test: string
+  from: string
   credit: number
   period: number
   score: string | number

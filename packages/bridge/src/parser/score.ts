@@ -1,4 +1,4 @@
-import type { Score, ScoreItem } from '../../types'
+import { type Score } from '../../types'
 
 /**
  * 解析成绩数据
@@ -10,7 +10,7 @@ export const score = (html: string): Score[] => {
   const table = dom.querySelector('#dataList')
   if (!table) return []
 
-  const terms = new Map<string, ScoreItem[]>()
+  const scores: Score[] = []
 
   table.querySelectorAll('tr').forEach((tr: HTMLTableRowElement) => {
     const row = [...tr.querySelectorAll('td')].map(
@@ -19,8 +19,8 @@ export const score = (html: string): Score[] => {
 
     if (row.length !== 13) return
 
-    const term = row[1]
-    const record = {
+    const score = {
+      term: row[1], // 学期
       id: row[2], // 课程编号
       name: row[3], // 课程名称
       score: isNaN(Number(row[4])) ? row[4] : Number(row[4]), //成绩
@@ -30,12 +30,13 @@ export const score = (html: string): Score[] => {
       from: row[8], // 考试性质
       type: row[9], // 课程属性
       nature: row[10], // 课程性质
-      category: row[11] || undefined, // 通识教育选修课程类别
-      mark: row[12] || undefined, // 成绩标记
-    }
+    } as Score
 
-    terms.set(term, [...(terms.get(term) || []), record])
+    if (row[11]) score['category'] = row[11] // 通识教育选修课程类别
+    if (row[12]) score['mark'] = row[12] // 成绩标记
+
+    scores.push(score)
   })
 
-  return [...terms].map(([name, scores]) => ({ name, scores }))
+  return scores
 }
