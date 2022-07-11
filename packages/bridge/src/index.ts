@@ -96,13 +96,9 @@ export class Bridge {
    * @returns 无返回值
    */
   async login(user: User, captcha: Captcha) {
-    // 如果没有获取登录所需的参数
-    // 就先加载一次登录页面来获取参数
-    if (Object.keys(this.loginPayload).length === 0) {
-      console.debug(`没有检测到登录 Payload，需要加载登录页面`)
-      const html = await this.fetcher({ ...登录页面 })
-      await this.setLoginPayload(html)
-    }
+    console.debug(`加载登录页面`)
+    const html = await this.fetcher({ ...登录页面 })
+    await this.setLoginPayload(html)
 
     await this.fetcher({
       ...登录,
@@ -118,6 +114,7 @@ export class Bridge {
     })
 
     console.debug(`登录完成，清除无用 Payload`)
+
     this.loginPayload = {}
   }
 

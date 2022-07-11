@@ -20,15 +20,20 @@ export const 登录 = {
   url: 'https://cas-443.wvpn.hrbeu.edu.cn/cas/login',
   method: FetchMethod.POST,
   headers: {
-    'sec-fetch-dest': 'document',
-    'sec-fetch-mode': 'navigate',
-    'sec-fetch-site': 'same-origin',
-    origin: 'https://cas-443.wvpn.hrbeu.edu.cn',
+    'Sec-Fetch-Dest': 'document',
+    'Sec-Fetch-Mode': 'navigate',
+    'Sec-Fetch-Site': 'same-origin',
+    'Sec-Fetch-User': '?1',
+    origin: '',
     referer:
-      'https://cas-443.wvpn.hrbeu.edu.cn/cas/login?service=https://edusys.wvpn.hrbeu.edu.cn/jsxsd/framework/xsMain.jsp',
-    'content-type': 'application/x-www-form-urlencoded',
-    accept:
+      'https://cas-443.wvpn.hrbeu.edu.cn/cas/login?service=http://edusys.hrbeu.edu.cn/jsxsd/caslogin.jsp',
+    // referer:
+    //   'https://cas-443.wvpn.hrbeu.edu.cn/cas/login?service=https://edusys.wvpn.hrbeu.edu.cn/jsxsd/framework/xsMain.jsp',
+    'Content-Type': 'application/x-www-form-urlencoded',
+    Accept:
       'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    'Upgrade-Insecure-Requests': '1',
+    'Cache-Control': 'max-age=0',
   },
   payload: {
     username: '',
@@ -43,15 +48,18 @@ export const 登录 = {
 }
 
 export const 登录页面 = {
-  url: 'https://cas-443.wvpn.hrbeu.edu.cn/cas/login?service=https://edusys.wvpn.hrbeu.edu.cn/jsxsd/index.jsp',
+  url: 'https://cas-443.wvpn.hrbeu.edu.cn/cas/login?service=http://edusys.hrbeu.edu.cn/jsxsd/caslogin.jsp',
   method: FetchMethod.GET,
   headers: {
-    'sec-fetch-dest': 'document',
-    'sec-fetch-mode': 'navigate',
-    'sec-fetch-site': 'same-site',
-    referer: 'https://edusys.wvpn.hrbeu.edu.cn/',
-    accept:
+    'Sec-Fetch-Dest': 'document',
+    'Sec-Fetch-Mode': 'navigate',
+    'Sec-Fetch-Site': 'same-site',
+    'Sec-Fetch-User': '?1',
+    Referer: 'https://edusys.wvpn.hrbeu.edu.cn/',
+    Accept:
       'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
+    'Upgrade-Insecure-Requests': '1',
+    'Cache-Control': 'max-age=0',
   },
 }
 

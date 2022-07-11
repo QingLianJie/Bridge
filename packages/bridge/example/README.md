@@ -8,7 +8,7 @@
 // @match http://localhost:3000/*
 ```
 
-在这个包的根目录下运行 `npm run demo`，打开 http://localhost:3000 即可查看演示。
+在这个包的根目录下运行 `npm run example`，打开 http://localhost:3000 即可查看演示。
 
 记得装开发依赖，用于启动演示服务器，命令也是根目录下 `pnpm i`。
 
