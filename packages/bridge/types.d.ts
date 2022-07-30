@@ -42,6 +42,7 @@ export interface Score {
 export interface Timetable {
   name: string // 学期
   weeks: TimetableWeek[]
+  scores: Summary
 }
 
 export interface TimetableWeek {
@@ -65,4 +66,18 @@ export interface TimetableCourse {
   week: number[]
   location?: string
   section?: number[]
+}
+
+export interface SummaryCourse {
+  name: string
+  week: number[]
+  day?: number[]
+  teacher: string[]
+  location?: string
+  section?: number[]
+}
+
+export interface Summary {
+  main: SummaryCourse[]
+  remark: SummaryCourse[]
 }

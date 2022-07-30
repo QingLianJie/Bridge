@@ -11,17 +11,17 @@
     "publish": "pnpm --filter bridge publish --access public "
   },
   "devDependencies": {
-    "c8": "^7.11.3",
-    "concurrently": "^7.2.2",
-    "happy-dom": "^6.0.3",
+    "c8": "^7.12.0",
+    "concurrently": "^7.3.0",
+    "happy-dom": "^6.0.4",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "serve": "^13.0.4",
-    "tsup": "^6.1.3",
+    "serve": "^14.0.1",
+    "tsup": "^6.2.1",
     "typescript": "^4.7.4",
-    "vite": "^2.9.14",
-    "vitest": "^0.18.0"
+    "vite": "^3.0.4",
+    "vitest": "^0.19.1"
   },
   "lint-staged": {
     "*.{ts,js,css,md}": "prettier --write"

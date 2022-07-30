@@ -1,6 +1,6 @@
 {
   "name": "@qing-dev/bridge",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "description": "清廉街数据桥接模块，用于从学校网站上获取并转换数据",
   "type": "module",
   "main": "dist/index.js",

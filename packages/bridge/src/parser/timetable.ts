@@ -1,4 +1,4 @@
-import type { TimetableWeek } from '../../types'
+import type { Summary, SummaryCourse, TimetableWeek } from '../../types'
 
 const weekdays = [
   '星期一',
@@ -85,6 +85,12 @@ export const timetable = (html: string) => {
   // 预先生成表格
   const data: TimetableWeek[] = create(max)
 
+  // 课程汇总
+  const summary: Summary = {
+    main: [],
+    remark: [],
+  }
+
   ;[...table.querySelectorAll('tr')].slice(1).map((tr, m) => {
     const cols = tr.querySelectorAll('td')
 
@@ -98,17 +104,28 @@ export const timetable = (html: string) => {
       courses?.map(course => {
         if (course.length === 0) return
         const item = course.split(/\s+/).filter(Boolean)
+
+        const name = item[0]
+        const teachers = item[1].split(',')
         const week = item[2]
           .replace('周', '')
           .split('-')
           .map(w => Number(w))
+        const weeks = range(week[0], week[1])
+
+        const index = summary.remark.findIndex(c => c.name === name)
+        if (index !== -1)
+          summary.remark[index].week = [
+            ...new Set([...summary.remark[index].week, ...weeks]),
+          ]
+        else summary.remark.push({ name, teacher: teachers, week: weeks })
 
         // 将课程添加到对应的周数
-        range(week[0], week[1]).map(i => {
+        weeks.map(i => {
           data[i - 1].rows[13].cols[0].courses.push({
-            name: item[0],
-            teacher: item[1].split(','),
-            week: range(week[0], week[1]),
+            name,
+            teacher: teachers,
+            week: weeks,
           })
         })
       })
@@ -132,22 +149,33 @@ export const timetable = (html: string) => {
         courses?.map(course => {
           if (course.length === 0) return
 
-          const section = course[3].match(/\d{2}/g)?.map(w => Number(w))
-          const week = course[2]
+          const name = course[0]
+          const teachers = course[1].split(',')
+          const weeks = course[2]
             .replace(/\(双?周\)/g, '')
             .split(',')
             .map(w => w.split('-').map(w => Number(w)))
             .map(w => range(w[0], w[1]))
             .flat()
+          const section = course[3].match(/\d{2}/g)?.map(w => Number(w))
+          const location = course[4]
 
-          week.map(i => {
+          summary.main.push({
+            name,
+            teacher: teachers,
+            week: weeks,
+            location,
+            section,
+          })
+
+          weeks.map(i => {
             section?.map(j => {
               if (group[m].includes(j))
                 data[i - 1].rows[j - 1].cols[n].courses.push({
-                  name: course[0],
-                  teacher: course[1].split(','),
-                  week,
-                  location: course[4],
+                  name,
+                  teacher: teachers,
+                  week: weeks,
+                  location,
                   section,
                 })
             })
@@ -157,5 +185,5 @@ export const timetable = (html: string) => {
     }
   })
 
-  return { name: term, weeks: data }
+  return { name: term, weeks: data, courses: summary }
 }
