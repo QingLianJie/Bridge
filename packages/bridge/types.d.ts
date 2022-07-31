@@ -71,7 +71,7 @@ export interface TimetableCourse {
 export interface SummaryCourse {
   name: string
   week: number[]
-  day?: number[]
+  day?: number
   teacher: string[]
   location?: string
   section?: number[]

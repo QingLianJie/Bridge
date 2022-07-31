@@ -162,10 +162,11 @@ export const timetable = (html: string) => {
 
           summary.main.push({
             name,
-            teacher: teachers,
             week: weeks,
-            location,
+            day: n + 1,
             section,
+            teacher: teachers,
+            location,
           })
 
           weeks.map(i => {
