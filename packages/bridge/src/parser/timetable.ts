@@ -1,4 +1,4 @@
-import type { Summary, SummaryCourse, TimetableWeek } from '../../types'
+import type { Summary, Timetable, TimetableWeek } from '../../types'
 
 const weekdays = [
   '星期一',
@@ -64,10 +64,15 @@ const create = (week: number = 1): TimetableWeek[] => {
  * @param {string} html 课表页面的 HTML 文件
  * @returns JSON 格式的数据
  */
-export const timetable = (html: string) => {
+export const timetable = (html: string): Timetable => {
   const dom = new DOMParser().parseFromString(html, 'text/html')
   const table = dom.querySelector('#kbtable')
-  if (!table) return { name: '无法获取课表', weeks: create() }
+  if (!table)
+    return {
+      name: '无法获取课表',
+      weeks: create(),
+      courses: { main: [], remark: [] },
+    }
 
   // 获取课表中的最大周数
   let max = Math.max(
@@ -75,12 +80,17 @@ export const timetable = (html: string) => {
       .map(str => str.replace(/(\(周\))|(周)/g, ''))
       .map(str => Number(str))
   )
-  if (max < 1) return { name: '空白课表', weeks: create() }
+  if (max < 1)
+    return {
+      name: '空白课表',
+      weeks: create(),
+      courses: { main: [], remark: [] },
+    }
 
   // 获取当前学期
-  const term = dom
-    .querySelector('#xnxq01id option[selected]')
-    ?.textContent?.trim()
+  const term =
+    dom.querySelector('#xnxq01id option[selected]')?.textContent?.trim() ||
+    '未知学期'
 
   // 预先生成表格
   const data: TimetableWeek[] = create(max)
@@ -157,7 +167,7 @@ export const timetable = (html: string) => {
             .map(w => w.split('-').map(w => Number(w)))
             .map(w => range(w[0], w[1]))
             .flat()
-          const section = course[3].match(/\d{2}/g)?.map(w => Number(w))
+          const section = course[3].match(/\d{2}/g)?.map(w => Number(w)) || []
           const location = course[4]
 
           summary.main.push({
