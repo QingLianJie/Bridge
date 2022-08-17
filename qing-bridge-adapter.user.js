@@ -1,14 +1,18 @@
+"use strict";
 // ==UserScript==
 // @name         清廉街 Bridge - UserScript
 // @namespace    https://github.com/QingLianJie/Bridge
 // @description  用于从学校网站上获取数据的一个插件。
-// @version      0.2.0
+// @version      0.2.1
 // @author       QingLianJie
 // @copyright    2022 © QingLianJie
 // @homepage     https://github.com/QingLianJie/Bridge
 // @license      MIT
 // @match        https://qinglianjie.cn/*
+// @match        https://dev.qinglianjie.cn/*
+// @match        https://internal.qinglianjie.cn/*
 // @match        https://qing-dev.dist.run/*
+// @match        http://localhost:20080/*
 // @run-at       document-start
 // @grant        unsafeWindow
 // @grant        GM_xmlhttpRequest
@@ -16,6 +20,10 @@
 // @connect      hrbeu.edu.cn
 // @icon         https://qinglianjie.cn/favicon.ico
 // ==/UserScript==
+
+
+// package.json
+var version = "0.2.1";
 
 // src/index.ts
 unsafeWindow.Fetcher = async (options) => {
@@ -37,5 +45,5 @@ unsafeWindow.Fetcher = async (options) => {
 };
 unsafeWindow.FetcherInfo = {
   name: "userscript",
-  version: "v0.2.0"
+  version: `v${version}`
 };
