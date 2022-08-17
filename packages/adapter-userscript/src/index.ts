@@ -1,5 +1,6 @@
 import type { FetcherOptions } from '../../../types'
 import type { MonkeyXhrResponse } from '../types'
+import { version } from '../package.json'
 
 unsafeWindow.Fetcher = async (options: FetcherOptions) => {
   return new Promise((resolve, reject) => {
@@ -22,5 +23,5 @@ unsafeWindow.Fetcher = async (options: FetcherOptions) => {
 
 unsafeWindow.FetcherInfo = {
   name: 'userscript',
-  version: 'v0.2.0',
+  version: `v${version}`,
 }

@@ -1,6 +1,6 @@
 {
   "name": "@qing-dev/adapter-userscript",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "description": "适用于 Tampermonkey 的脚本",
   "main": "src/index.ts",

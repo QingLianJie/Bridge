@@ -11,7 +11,10 @@ export const banner = `// ==UserScript==
 // @homepage     https://github.com/QingLianJie/Bridge
 // @license      MIT
 // @match        https://qinglianjie.cn/*
+// @match        https://dev.qinglianjie.cn/*
+// @match        https://internal.qinglianjie.cn/*
 // @match        https://qing-dev.dist.run/*
+// @match        http://localhost:20080/*
 // @run-at       document-start
 // @grant        unsafeWindow
 // @grant        GM_xmlhttpRequest
